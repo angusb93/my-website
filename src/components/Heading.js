@@ -1,20 +1,25 @@
 import React from "react";
-const headingStyles = {
-  fontSize: "8rem",
-  float: "left",
-};
-const angusStyles = {
-  paddingLeft: "150px",
-};
-const buickStyles = {
-  paddingLeft: "240px",
-};
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  headingStyles: {
+    fontSize: "8rem",
+    float: "left",
+  },
+  angusStyles: {
+    paddingLeft: "150px",
+  },
+  buickStyles: {
+    paddingLeft: "240px",
+  },
+});
 const Heading = () => {
+  const classes = useStyles();
   return (
-    <h1 style={headingStyles}>
-      <span style={angusStyles}>ANGUS </span>
+    <h1 style={classes.headingStyles}>
+      <span style={classes.angusStyles}>ANGUS </span>
       <br />
-      <span style={buickStyles}>BUICK</span>
+      <span style={classes.buickStyles}>BUICK</span>
     </h1>
   );
 };
