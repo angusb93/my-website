@@ -36,6 +36,7 @@ export default function Nav() {
               network="email"
               url="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"
               className={classes.icons}
+              fgColor="red"
             />
             <SocialIcon
               url="https://www.linkedin.com/in/angusbuick/"

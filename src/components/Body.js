@@ -1,14 +1,16 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { LoremIpsum, Avatar } from "react-lorem-ipsum";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "auto",
+    paddingTop: "25rem",
     display: "flex",
-    paddingTop: "600px",
     width: "50%",
     flexDirection: "column",
     justifyContent: "center",
+    fontSize: "large",
   },
 }));
 
@@ -32,7 +34,7 @@ export default function Body() {
           </li>
           <li>UNSW - Graduate Certificate in Computing</li>
           <li>Udemy - The Web Developer Bootcamp 2021</li>
-          <li>Udemy - The Modern React Bootcamp</li>
+          <li>Udemy - The Modern React Bootcamp 2021</li>
         </ul>
       </section>
       <section>
@@ -43,6 +45,9 @@ export default function Body() {
           <li>Thesis</li>
         </ul>
       </section>
+      <div>
+        <LoremIpsum p={5} />
+      </div>
     </div>
   );
 }
