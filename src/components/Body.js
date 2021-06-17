@@ -22,8 +22,22 @@ export default function Body() {
         <h2>About</h2>
         <p>
           I'm Angus. I'm a software engineer with a diverse technical
-          background. I'm looking for front-end developer or creative
-          technologist roles.
+          background. I studied mechatronic engineering for my undergraduate at
+          Macquarie where I learnt about mathematics, electronics, control
+          systems and robotics.
+        </p>
+        <p>
+          I then studied computing at UNSW where I learnt about data structures,
+          algorithms, databases and networks.
+        </p>
+        <p>
+          I have also recently done some courses on modern web development
+          through Udemy. I have been working as a technician fixing and
+          installing anything from CNC routers to servers and everything in
+          between.
+          <b>
+            I'm looking for front-end developer or creative technologist roles.
+          </b>
         </p>
       </section>
       <section>

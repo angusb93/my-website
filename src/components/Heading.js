@@ -12,15 +12,14 @@ const useStyles = makeStyles({
     fontSize: "large",
   },
   headingStyles: {
-    fontSize: "2rem",
+    fontSize: "3rem",
     paddingTop: "4rem",
   },
-  angusStyles: {
-    // paddingLeft: "2rem",
-    lineHeight: "30%",
-  },
+
   buickStyles: {
-    paddingLeft: "2rem",
+    paddingLeft: "6rem",
+    lineHeight: "30%",
+    justifyContent: "center",
   },
   subheading: {
     fontSize: "4rem",
@@ -36,7 +35,7 @@ const Heading = () => {
   return (
     <div className={classes.root}>
       <h2 className={classes.headingStyles}>
-        <div className={classes.angusStyles}>ANGUS </div>
+        <div>ANGUS </div>
         <div className={classes.buickStyles}>BUICK</div>
       </h2>
       <h1 className={classes.subheading}>
