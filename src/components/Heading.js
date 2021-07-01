@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
+import andy from "./andy.png";
 const useStyles = makeStyles({
   root: {
     margin: "auto",
@@ -29,30 +30,44 @@ const useStyles = makeStyles({
   icons: {
     marginLeft: "10px",
   },
+  myHead: {
+    position: "fixed",
+    marginLeft: "2rem",
+    paddingTop: "-4rem",
+    zIndex: "-2",
+  },
 });
 const Heading = () => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <h2 className={classes.headingStyles}>
-        <div>ANGUS </div>
-        <div className={classes.buickStyles}>BUICK</div>
-      </h2>
-      <h1 className={classes.subheading}>
-        I'm an aspiring creative technologist.
-      </h1>
-      <h2>
-        Say hello here →
-        <SocialIcon
-          network="email"
-          url="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"
-          className={classes.icons}
-        />
-        <SocialIcon
-          url="https://www.linkedin.com/in/angusbuick/"
-          className={classes.icons}
-        />
-      </h2>
+    <div>
+      <img
+        className={classes.myHead}
+        style={{ opacity: "0.8" }}
+        src={andy}
+        alt=""
+      />
+      <div className={classes.root}>
+        <h2 className={classes.headingStyles}>
+          <div>ANGUS </div>
+          <div className={classes.buickStyles}>BUICK</div>
+        </h2>
+        <h1 className={classes.subheading}>
+          I'm an aspiring creative <br /> technologist.
+        </h1>
+        <h2>
+          Say hello here →
+          <SocialIcon
+            network="email"
+            url="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"
+            className={classes.icons}
+          />
+          <SocialIcon
+            url="https://www.linkedin.com/in/angusbuick/"
+            className={classes.icons}
+          />
+        </h2>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,19 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { LoremIpsum, Avatar } from "react-lorem-ipsum";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    margin: "0",
+    height: "100%",
+    width: "100%",
+    overflow: "hidden",
+    // background: "rgb(238,174,202)",
+    // background:
+    //   "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
+  },
+  pageStyles: {
     margin: "auto",
-    paddingTop: "25rem",
+    paddingTop: "5rem",
     display: "flex",
     width: "50%",
     flexDirection: "column",
@@ -18,7 +26,7 @@ export default function Body() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <section>
+      <section className={classes.pageStyles}>
         <h2>About</h2>
         <p>
           I'm Angus. I'm a software engineer with a diverse technical
@@ -34,7 +42,7 @@ export default function Body() {
           I have also recently done some courses on modern web development
           through Udemy. I have been working as a technician fixing and
           installing anything from CNC routers to servers and everything in
-          between.
+          between.{" "}
           <b>
             I'm looking for front-end developer or creative technologist roles.
           </b>
@@ -51,17 +59,10 @@ export default function Body() {
           <li>Udemy - The Modern React Bootcamp 2021</li>
         </ul>
       </section>
-      <section>
-        <h2>Projects</h2>
-        <ul>
-          <li>Color Picker</li>
-          <li>YelpCamp</li>
-          <li>Thesis</li>
-        </ul>
-      </section>
-      <div>
+
+      {/* <div>
         <LoremIpsum p={5} />
-      </div>
+      </div> */}
     </div>
   );
 }

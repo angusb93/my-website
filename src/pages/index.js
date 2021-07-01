@@ -1,21 +1,15 @@
-import React from "react";
+import React, { Component } from "react";
 import "@fontsource/noto-sans-jp";
-import andy from "./andy.png";
-import Heading from "../components/Heading";
-// import Nav from "../components/Nav";
-import Body from "../components/Body";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+import Heading from "../components/Heading";
+import Body from "../components/Body";
+import Projects from "../components/Projects";
+import { withStyles } from "@material-ui/core/styles";
+
+import ReactPageScroller from "react-page-scroller";
+const styles = {
   pageStyles: {
     color: "#232129",
-    // // backgroundImage: `url(${andy})`,
-    // backgroundSize: "1200px",
-    // backgroundPosition: "center 15rem",
-    // backgroundRepeat: "no-repeat",
-    // backgroundAttachment: "fixed",
-    // height: "80vh",
-    // position: "relative",
     fontFamily: "Noto Sans JP",
     margin: "0px",
     padding: "0",
@@ -23,27 +17,53 @@ const useStyles = makeStyles({
     flexDirection: "column",
     width: "75%",
   },
-  myHead: {
+  paginationAdditionalClass: {
+    margin: "0",
     position: "fixed",
-    marginLeft: "2rem",
-    paddingTop: "-4rem",
-    zIndex: "-2",
+    top: "20px",
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
   },
-});
-const App = () => {
-  const classes = useStyles();
-  return (
-    <main className={classes.pageStyles}>
-      <img
-        className={classes.myHead}
-        style={{ opacity: "0.8" }}
-        src={andy}
-        alt=""
-      />
-      <Heading />
-      <Body />
-    </main>
-  );
+  ".pagination-additional-class > li:not(:last-of-type) > a, .pagination-additional-class > li:not(:last-of-type) > span":
+    {
+      marginRight: "50px",
+    },
 };
 
-export default App;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { currentPage: null };
+  }
+
+  handlePageChange = (number) => {
+    this.setState({ currentPage: number });
+  };
+
+  handleBeforePageChange = (number) => {
+    console.log(number);
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <React.Fragment>
+        <main className={classes.pageStyles}>
+          <ReactPageScroller
+            pageOnChange={this.handlePageChange}
+            onBeforePageScroll={this.handleBeforePageChange}
+            customPageNumber={this.state.currentPage}
+            animationTimer={500}
+          >
+            <Heading />
+            <Body />
+            <Projects />
+          </ReactPageScroller>
+        </main>
+      </React.Fragment>
+    );
+  }
+}
+
+export default withStyles(styles)(App);
