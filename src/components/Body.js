@@ -7,18 +7,17 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     overflow: "hidden",
-    // background: "rgb(238,174,202)",
-    // background:
-    //   "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)",
+    background: "white",
   },
   pageStyles: {
     margin: "auto",
     paddingTop: "5rem",
     display: "flex",
-    width: "50%",
+    width: "30%",
     flexDirection: "column",
     justifyContent: "center",
-    fontSize: "large",
+    fontSize: "20px",
+    color: "black",
   },
 }));
 
@@ -30,25 +29,24 @@ export default function Body() {
         <h2>About</h2>
         <p>
           I'm Angus. I'm a software engineer with a diverse technical
-          background. I studied mechatronic engineering for my undergraduate at
-          Macquarie where I learnt about mathematics, electronics, control
-          systems and robotics.
+          background. I have been working as a technician fixing and installing
+          anything from CNC routers to servers and everything in between.
         </p>
+
         <p>
-          I then studied computing at UNSW where I learnt about data structures,
-          algorithms, databases and networks.
+          I studied mechatronic engineering for my undergraduate at Macquarie
+          where I learnt about mathematics, electronics, control systems and
+          robotics. I then studied computing at UNSW where I learnt about data
+          structures, algorithms, databases and networks.
         </p>
         <p>
           I have also recently done some courses on modern web development
-          through Udemy. I have been working as a technician fixing and
-          installing anything from CNC routers to servers and everything in
-          between.{" "}
+          through Udemy.{" "}
           <b>
             I'm looking for front-end developer or creative technologist roles.
           </b>
         </p>
-      </section>
-      <section>
+
         <h2>Education</h2>
         <ul>
           <li>
@@ -58,11 +56,8 @@ export default function Body() {
           <li>Udemy - The Web Developer Bootcamp 2021</li>
           <li>Udemy - The Modern React Bootcamp 2021</li>
         </ul>
+        <h2>Find my Resume here</h2>
       </section>
-
-      {/* <div>
-        <LoremIpsum p={5} />
-      </div> */}
     </div>
   );
 }

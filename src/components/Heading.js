@@ -2,15 +2,22 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
 import andy from "./andy.png";
+import background from "./background.png";
 const useStyles = makeStyles({
   root: {
+    margin: "0",
+    overflow: "hidden",
+    background: "white",
+  },
+  pageStyles: {
     margin: "auto",
-    paddingTop: "10rem",
+    paddingTop: "5rem",
     display: "flex",
     width: "50%",
     flexDirection: "column",
     justifyContent: "center",
-    fontSize: "large",
+    fontSize: "20px",
+    color: "black",
   },
   headingStyles: {
     fontSize: "3rem",
@@ -34,20 +41,20 @@ const useStyles = makeStyles({
     position: "fixed",
     marginLeft: "2rem",
     paddingTop: "-4rem",
-    zIndex: "-2",
+    zIndex: "1",
   },
 });
 const Heading = () => {
   const classes = useStyles();
   return (
-    <div>
+    <div className={classes.noise}>
       <img
         className={classes.myHead}
         style={{ opacity: "0.8" }}
         src={andy}
         alt=""
       />
-      <div className={classes.root}>
+      <div className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>
           <div>ANGUS </div>
           <div className={classes.buickStyles}>BUICK</div>

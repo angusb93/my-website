@@ -8,27 +8,23 @@ import { withStyles } from "@material-ui/core/styles";
 
 import ReactPageScroller from "react-page-scroller";
 const styles = {
-  pageStyles: {
+  root: {
     color: "#232129",
     fontFamily: "Noto Sans JP",
-    margin: "0px",
     padding: "0",
     display: "flex",
     flexDirection: "column",
-    width: "75%",
-  },
-  paginationAdditionalClass: {
     margin: "0",
-    position: "fixed",
-    top: "20px",
-    display: "flex",
-    justifyContent: "center",
+    height: "100%",
     width: "100%",
+    overflow: "hidden",
   },
-  ".pagination-additional-class > li:not(:last-of-type) > a, .pagination-additional-class > li:not(:last-of-type) > span":
-    {
-      marginRight: "50px",
+  "@global": {
+    "html, body": {
+      margin: 0,
+      padding: 0,
     },
+  },
 };
 
 class App extends Component {
@@ -49,12 +45,12 @@ class App extends Component {
     const { classes } = this.props;
     return (
       <React.Fragment>
-        <main className={classes.pageStyles}>
+        <main className={classes.root}>
           <ReactPageScroller
             pageOnChange={this.handlePageChange}
             onBeforePageScroll={this.handleBeforePageChange}
             customPageNumber={this.state.currentPage}
-            animationTimer={500}
+            animationTimer={400}
           >
             <Heading />
             <Body />
