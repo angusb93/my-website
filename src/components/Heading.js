@@ -3,12 +3,65 @@ import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
 import andy from "./andy.png";
 import background from "./background.png";
+// import "./noise.css";
 const useStyles = makeStyles({
   root: {
     margin: "0",
+    height: "100%",
+    width: "100%",
     overflow: "hidden",
-    background: "white",
+    background: "rgb(240,240,240)",
   },
+  "@-webkit-keyframes noise": {
+    "0%": { transform: "translate3d(0, 9rem, 0)" },
+    "10%": { transform: "translate3d(-1rem, -4rem, 0)" },
+    "20%": { transform: "translate3d(-8rem, 2rem, 0)" },
+    "30%": { transform: "translate3d(9rem, -9rem, 0)" },
+    "40%": { transform: "translate3d(-2rem, 7rem, 0)" },
+    "50%": { transform: "translate3d(-9rem, -4rem, 0)" },
+    "60%": { transform: "translate3d(2rem, 6rem, 0)" },
+    "70%": { transform: "translate3d(7rem, -8rem, 0)" },
+    "80%": { transform: "translate3d(-9rem, 1rem, 0)" },
+    "90%": { transform: "translate3d(6rem, -5rem, 0)" },
+    to: { transform: "translate3d(-7rem, 0, 0)" },
+  },
+  "@keyframes noise": {
+    "0%": { transform: "translate3d(0, 9rem, 0)" },
+    "10%": { transform: "translate3d(-1rem, -4rem, 0)" },
+    "20%": { transform: "translate3d(-8rem, 2rem, 0)" },
+    "30%": { transform: "translate3d(9rem, -9rem, 0)" },
+    "40%": { transform: "translate3d(-2rem, 7rem, 0)" },
+    "50%": { transform: "translate3d(-9rem, -4rem, 0)" },
+    "60%": { transform: "translate3d(2rem, 6rem, 0)" },
+    "70%": { transform: "translate3d(7rem, -8rem, 0)" },
+    "80%": { transform: "translate3d(-9rem, 1rem, 0)" },
+    "90%": { transform: "translate3d(6rem, -5rem, 0)" },
+    to: { transform: "translate3d(-7rem, 0, 0)" },
+  },
+  noise: {
+    width: "100%",
+    height: "100%",
+    position: "fixed",
+    left: "0",
+    top: "0",
+    pointerEvents: "none",
+    zIndex: "1",
+
+    "&:after": {
+      content: '""',
+      width: "calc(100% + 20rem)",
+      height: "calc(100% + 20rem)",
+      backgroundImage: `url(${background})`,
+      backgroundPosition: "50%",
+      position: "absolute",
+      left: "-10rem",
+      top: "-10rem",
+      willChange: "transform",
+      WebkitAnimation: "$noise 1s steps(2) infinite",
+      animation: "$noise 1s steps(2) infinite",
+    },
+  },
+
   pageStyles: {
     margin: "auto",
     paddingTop: "5rem",
@@ -47,7 +100,7 @@ const useStyles = makeStyles({
 const Heading = () => {
   const classes = useStyles();
   return (
-    <div className={classes.noise}>
+    <div className={classes.root}>
       <img
         className={classes.myHead}
         style={{ opacity: "0.8" }}
@@ -75,6 +128,7 @@ const Heading = () => {
           />
         </h2>
       </div>
+      <div className={classes.noise}></div>
     </div>
   );
 };
