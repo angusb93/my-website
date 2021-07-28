@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     height: "100%",
     width: "100%",
     overflow: "hidden",
-    background: "rgb(240,240,240)",
+    color: "#232129",
   },
 
   pageStyles: {
@@ -46,6 +46,18 @@ const useStyles = makeStyles({
     paddingTop: "-4rem",
     zIndex: "1",
   },
+  contact: {
+    fill: "currentColor",
+    height: "auto",
+    maxWidth: "66vmin",
+    transformOrigin: "center",
+    width: "30%",
+    animation: "$loop 10s linear infinite",
+  },
+  "@keyframes loop": {
+    "0%": { transform: "rotate(0deg)" },
+    "100%": { transform: "rotate(360deg)" },
+  },
 });
 const Heading = () => {
   const classes = useStyles();
@@ -76,6 +88,28 @@ const Heading = () => {
             url="https://www.linkedin.com/in/angusbuick/"
             className={classes.icons}
           />
+          <svg
+            className={classes.contact}
+            viewBox="0 0 120 120"
+            width="100"
+            height="100"
+          >
+            <defs>
+              <path
+                id="circle"
+                // d="M50,100a50,50 0 1,0 100,0a50,50 0 1,0 -100,0"
+                d="M50, 60
+                m -37, 0
+                a 37,37 0 1,1 94,0
+                a 37,37 0 1,1 -94,0"
+              />
+            </defs>
+            <text font-size="17">
+              <textPath href="#circle">
+                Contact &nbsp; Contact &nbsp; Contact &nbsp; Contact
+              </textPath>
+            </text>
+          </svg>
         </h2>
       </div>
     </div>
