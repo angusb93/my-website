@@ -44,31 +44,42 @@ const useStyles = makeStyles({
     position: "fixed",
     marginLeft: "2rem",
     paddingTop: "-4rem",
-    zIndex: "1",
+    opacity: "0.8",
+    // zIndex: "1",
   },
   contact: {
-    fill: "currentColor",
-    height: "auto",
-    maxWidth: "66vmin",
-    transformOrigin: "center",
-    width: "30%",
+    width: "200px",
+    height: "200px",
+    overflow: "hidden",
+    display: "block",
+    transformOrigin: "center center",
     animation: "$loop 10s linear infinite",
+    transition: "all 400ms ease-in-out",
+    transform: "scale(2)",
+    "&:hover": {
+      transition: "all 400ms ease-in-out",
+      animationDuration: "5s",
+      width: "20%",
+      transform: "scale(1.1)",
+    },
+  },
+  svg: {
+    float: "left",
   },
   "@keyframes loop": {
     "0%": { transform: "rotate(0deg)" },
     "100%": { transform: "rotate(360deg)" },
+  },
+  "@keyframes scale": {
+    "0%": { transform: "scale(1)" },
+    "100%": { transform: "scale(0.45)" },
   },
 });
 const Heading = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <img
-        className={classes.myHead}
-        style={{ opacity: "0.8" }}
-        src={andy}
-        alt=""
-      />
+      <img className={classes.myHead} src={andy} alt="" />
       <div className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>
           <div>ANGUS </div>
@@ -77,8 +88,8 @@ const Heading = () => {
         <h1 className={classes.subheading}>
           I'm an aspiring creative <br /> technologist.
         </h1>
-        <h2>
-          Say hello here →
+        {/* <h2> */}
+        {/* Say hello here →
           <SocialIcon
             network="email"
             url="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"
@@ -87,13 +98,9 @@ const Heading = () => {
           <SocialIcon
             url="https://www.linkedin.com/in/angusbuick/"
             className={classes.icons}
-          />
-          <svg
-            className={classes.contact}
-            viewBox="0 0 120 120"
-            width="100"
-            height="100"
-          >
+          /> */}
+        <div className={classes.contact}>
+          <svg viewBox="0 0 120 120" width="100%" height="auto">
             <defs>
               <path
                 id="circle"
@@ -110,7 +117,8 @@ const Heading = () => {
               </textPath>
             </text>
           </svg>
-        </h2>
+        </div>
+        {/* </h2> */}
       </div>
     </div>
   );
