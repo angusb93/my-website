@@ -55,7 +55,6 @@ const useStyles = makeStyles({
     transformOrigin: "center center",
     animation: "$loop 10s linear infinite",
     transition: "all 400ms ease-in-out",
-    transform: "scale(2)",
     "&:hover": {
       transition: "all 400ms ease-in-out",
       animationDuration: "5s",
@@ -77,6 +76,9 @@ const useStyles = makeStyles({
 });
 const Heading = () => {
   const classes = useStyles();
+  function changeBackground(e) {
+    e.target.style.background = "red";
+  }
   return (
     <div className={classes.root}>
       <img className={classes.myHead} src={andy} alt="" />
@@ -99,6 +101,9 @@ const Heading = () => {
             url="https://www.linkedin.com/in/angusbuick/"
             className={classes.icons}
           /> */}
+        <div>
+          <button onMouseOver={changeBackground}>Hover over me!</button>
+        </div>
         <div className={classes.contact}>
           <svg viewBox="0 0 120 120" width="100%" height="auto">
             <defs>
