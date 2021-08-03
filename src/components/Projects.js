@@ -1,6 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+const $quoteSym = '"';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -23,11 +25,26 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontSize: "40px",
   },
-  h4: {
-    marginBottom: "0%",
-  },
-  a: {
-    backgroundColor: "rgba(79, 192, 141, 0.5)",
+  link: {
+    // backgroundColor: "rgba(30,143,235,0.5)",
+    color: "black",
+    textDecoration: "none",
+    position: "relative",
+    "&:after": {
+      content: "''",
+      position: "absolute",
+      zIndex: "-1",
+      top: "60%",
+      left: "-0.1em",
+      right: "-0.1em",
+      bottom: "0",
+      transition: "top 200ms cubic-bezier(0, 0.8, 0.13, 1)",
+      backgroundColor: "rgba(79, 192, 141, 0.5)",
+    },
+    "&:after:&:hover": {
+      top: "100%",
+      // backgroundColor: "rgba(79, 192, 141, 0.5)",
+    },
   },
 }));
 export default function Projects() {
@@ -36,9 +53,15 @@ export default function Projects() {
     <div className={classes.root}>
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>Projects</h2>
-        <h4 className={classes.projectStyles}>
-          {" "}
-          <a href="https://angus-color-picker.netlify.app/"> Color Picker</a>
+        <h4>
+          <a
+            className={classes.link}
+            href="https://angus-color-picker.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Color Picker
+          </a>
         </h4>
         <p>
           Color picker is a clone of 'flat ui colors' that allows you to create
@@ -49,7 +72,16 @@ export default function Projects() {
           React Router and Material UI.
         </p>
 
-        <h4>YelpCamp</h4>
+        <h4>
+          <a
+            className={classes.link}
+            href="https://angus-yelpcamp.herokuapp.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            YelpCamp
+          </a>
+        </h4>
         <p>
           YelpCamp is a site where you can login and post campsites with images
           and locations. Other users can view the campsites and post reviews if

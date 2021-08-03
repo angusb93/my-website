@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
 import andy from "./andy.png";
@@ -51,15 +51,14 @@ const useStyles = makeStyles({
     width: "200px",
     height: "200px",
     overflow: "hidden",
-    display: "block",
-    transformOrigin: "center center",
+    display: "inline-block",
     animation: "$loop 10s linear infinite",
     transition: "all 400ms ease-in-out",
     "&:hover": {
-      transition: "all 400ms ease-in-out",
-      animationDuration: "5s",
-      width: "20%",
-      transform: "scale(1.1)",
+      // transition: "all 400ms ease-in-out",
+      // animationDuration: "5s",
+      // width: "20%",
+      fill: "#1e8feb",
     },
   },
   svg: {
@@ -75,10 +74,13 @@ const useStyles = makeStyles({
   },
 });
 const Heading = () => {
+  const [scaleContact, scaleContactOn] = useState(false);
+
   const classes = useStyles();
-  function changeBackground(e) {
-    e.target.style.background = "red";
-  }
+  const setOverTrue = () => {
+    scaleContactOn((scaleContact) => !scaleContact);
+    console.log(scaleContact);
+  };
   return (
     <div className={classes.root}>
       <img className={classes.myHead} src={andy} alt="" />
@@ -101,11 +103,19 @@ const Heading = () => {
             url="https://www.linkedin.com/in/angusbuick/"
             className={classes.icons}
           /> */}
-        <div>
-          <button onMouseOver={changeBackground}>Hover over me!</button>
-        </div>
-        <div className={classes.contact}>
-          <svg viewBox="0 0 120 120" width="100%" height="auto">
+        <a
+          className={classes.contact}
+          href="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <svg
+            viewBox="0 0 120 120"
+            width="100%"
+            length="auto"
+            onMouseOver={setOverTrue}
+            // transform={scaleContact ? "scale(0.8)" : "scale(1)"}
+          >
             <defs>
               <path
                 id="circle"
@@ -116,13 +126,13 @@ const Heading = () => {
                 a 37,37 0 1,1 -94,0"
               />
             </defs>
-            <text font-size="17">
+            <text fontSize="17">
               <textPath href="#circle">
                 Contact &nbsp; Contact &nbsp; Contact &nbsp; Contact
               </textPath>
             </text>
           </svg>
-        </div>
+        </a>
         {/* </h2> */}
       </div>
     </div>
