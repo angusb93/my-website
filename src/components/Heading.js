@@ -53,11 +53,13 @@ const useStyles = makeStyles({
     overflow: "hidden",
     display: "inline-block",
     animation: "$loop 10s linear infinite",
-    transition: "all 400ms ease-in-out",
+    // transition: "all 400ms ease-in-out",
+    transition: "all 300ms cubic-bezier(0, 0.8, 0.13, 1)",
     "&:hover": {
       // transition: "all 400ms ease-in-out",
       // animationDuration: "5s",
       // width: "20%",
+
       fill: "#1e8feb",
     },
   },
