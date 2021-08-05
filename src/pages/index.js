@@ -9,6 +9,12 @@ import background from "./background.png";
 
 import ReactPageScroller from "react-page-scroller";
 const styles = {
+  "@global": {
+    "html, body": {
+      margin: 0,
+      padding: 0,
+    },
+  },
   root: {
     color: "#232129",
     fontFamily: "Noto Sans JP",
@@ -20,12 +26,7 @@ const styles = {
     width: "100%",
     overflow: "hidden",
   },
-  "@global": {
-    "html, body": {
-      margin: 0,
-      padding: 0,
-    },
-  },
+
   "@-webkit-keyframes noise": {
     "0%": { transform: "translate3d(0, 9rem, 0)" },
     "10%": { transform: "translate3d(-1rem, -4rem, 0)" },

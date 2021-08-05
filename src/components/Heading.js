@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
-import andy from "./andy.png";
+import andy from "../images/andy.png";
 // import "./noise.css";
 const useStyles = makeStyles({
   root: {
