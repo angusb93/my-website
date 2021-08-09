@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     width: "300px",
     float: "right",
     border: "2px solid rgb(30,143,235)",
-    borderRadius: "5%",
+    borderRadius: "10px",
     transform: "scale(0.95)",
     transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
     "&:hover": {
