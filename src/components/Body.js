@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import thesis from "../../public/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -8,15 +8,16 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     overflow: "hidden",
     background: "white",
-    // transition: "all 200ms cubic-bezier(0, 0.8, 0.13, 1)",
+    transition: "all 400ms cubic-bezier(0, 0.8, 0.13, 1)",
   },
   rootChanged: {
     margin: "0",
     height: "100%",
     width: "100%",
     overflow: "hidden",
-    background: "rgb(40,39,37,0.9)",
-    transition: "all 200ms cubic-bezier(0, 0.8, 0.13, 1)",
+    background: "rgb(40,39,37,1)",
+    transitionDelay: "400ms",
+    transition: "all 600ms cubic-bezier(0.13, 0.8, 0, 1)",
     color: "rgb(249,205,205)",
   },
   pageStyles: {
@@ -59,32 +60,45 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  linkChanged: {
+    color: "rgb(249,205,205)",
+    textDecoration: "none",
+    position: "relative",
+    "&::after": {
+      content: "''",
+      position: "absolute",
+      zIndex: "1",
+      top: "60%",
+      left: "-0.1em",
+      right: "-0.1em",
+      bottom: "0",
+      transition: "top 200ms cubic-bezier(0, 0.8, 0.13, 1)",
+      backgroundColor: "rgba(40,153,245,0.5)",
+    },
+    //rule that makes background halfway and then goes up to max once mouse is over
+    "&:hover": {
+      "&:after": {
+        top: "0%",
+      },
+    },
+  },
 }));
 
 export default function Body(props) {
   const classes = useStyles();
   const [toggle, setToggle] = useState(false);
 
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    //if props are changed, toggle will be true
-    if (props.colorChange === true) {
-      setToggle(true);
-    } else {
-      setToggle(false);
-    }
-    console.log(props.colorChange);
-    // setTimeout(
-    //   function () {
-    //     //Start the timer
-    //     setToggle(true); //After 1 second, set render to true
-    //   }.bind(this),
-    //   5000
-    // );
-  });
-  const isChanged = false;
+  // // Similar to componentDidMount and componentDidUpdate:
+  // useEffect(() => {
+  //   // if props are changed, toggle will be true
+  //   if (props.colorChange === true) {
+  //     setToggle(true);
+  //   } else {
+  //     setToggle(false);
+  //   }
+  // });
   return (
-    <div className={toggle ? classes.rootChanged : classes.root}>
+    <div className={props.colorChange ? classes.rootChanged : classes.root}>
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>About</h2>
         <p className={classes.paragraphStyles}>
@@ -116,7 +130,11 @@ export default function Body(props) {
           <li>Udemy - The Modern React Bootcamp 2021</li>
         </ul>
         <h2 className={classes.headingStyles}>
-          <a className={classes.link} href="google.com">
+          <a
+            className={props.colorChange ? classes.linkChanged : classes.link}
+            href={thesis}
+            target="_blank"
+          >
             Find my resumé here
           </a>
         </h2>

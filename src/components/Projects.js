@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import reactColors from "../images/reactColors.png";
 import yelpCamp from "../images/yelpCamp.png";
-import thesis from "../images/thesis.png";
-
+import thesisImage from "../images/thesis.png";
+import thesis from "../../public/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -140,7 +140,7 @@ export default function Projects() {
           <h4 className={classes.projectCardTitles}>
             <a
               className={classes.link}
-              href="https://angus-yelpcamp.herokuapp.com/"
+              href={thesis}
               target="_blank"
               rel="noreferrer"
             >
@@ -153,12 +153,8 @@ export default function Projects() {
             "Autonomous Automotive Wind Tunnel Model". I explored different
             control systems and methodolgies for keeping a minature model
             "driving" by itself on a moving ground within a wind tunnel.
-            <a
-              href="https://angus-yelpcamp.herokuapp.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img className={classes.images} src={thesis} alt="" />
+            <a href={thesis} target="_blank" rel="noreferrer">
+              <img className={classes.images} src={thesisImage} alt="" />
             </a>
           </p>
         </div>

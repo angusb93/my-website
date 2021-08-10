@@ -81,15 +81,17 @@ const styles = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentPage: null };
+    this.state = { currentPage: null, beforePagechange: null };
   }
 
   handlePageChange = (number) => {
-    this.setState({ currentPage: number });
+    // this.setState({ currentPage: number });
+    // console.log("handle page change =" + number);
   };
 
   handleBeforePageChange = (number) => {
-    console.log(number);
+    this.setState({ beforePagechange: number });
+    // console.log("before page change =" + number);
   };
 
   render() {
@@ -101,10 +103,12 @@ class App extends Component {
             pageOnChange={this.handlePageChange}
             onBeforePageScroll={this.handleBeforePageChange}
             customPageNumber={this.state.currentPage}
-            animationTimer={400}
+            animationTimer={600}
           >
             <Heading />
-            <Body colorChange={this.state.currentPage === 1 ? true : false} />
+            <Body
+              colorChange={this.state.beforePagechange === 1 ? true : false}
+            />
             <Projects />
           </ReactPageScroller>
           <div />
