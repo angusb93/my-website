@@ -61,19 +61,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Body() {
+export default function Body(props) {
   const classes = useStyles();
   const [toggle, setToggle] = useState(false);
 
   // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    setTimeout(
-      function () {
-        //Start the timer
-        setToggle(true); //After 1 second, set render to true
-      }.bind(this),
-      5000
-    );
+    //if props are changed, toggle will be true
+    if (props.colorChange === true) {
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+    console.log(props.colorChange);
+    // setTimeout(
+    //   function () {
+    //     //Start the timer
+    //     setToggle(true); //After 1 second, set render to true
+    //   }.bind(this),
+    //   5000
+    // );
   });
   const isChanged = false;
   return (

@@ -104,7 +104,7 @@ class App extends Component {
             animationTimer={400}
           >
             <Heading />
-            <Body />
+            <Body colorChange={this.state.currentPage === 1 ? true : false} />
             <Projects />
           </ReactPageScroller>
           <div />
