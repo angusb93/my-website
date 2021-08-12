@@ -23,14 +23,11 @@
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-material-ui": "^3.0.1",
-    "gatsby-plugin-styled-components": "^4.7.0",
+    "gatsby-plugin-styled-components": "^4.11.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.1",
-    "react-lorem-ipsum": "^1.4.9",
     "react-page-scroller": "^2.1.0",
-    "react-social-icons": "^5.4.1",
-    "react-three-fiber": "^6.0.13",
-    "three": "^0.129.0"
+    "react-social-icons": "^5.4.1"
   }
 }
