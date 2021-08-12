@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-// import thesis from "../../public/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -42,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     textDecoration: "none",
     position: "relative",
+
     "&::after": {
       content: "''",
       position: "absolute",
@@ -86,17 +86,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Body(props) {
   const classes = useStyles();
-  const [toggle, setToggle] = useState(false);
-
-  // // Similar to componentDidMount and componentDidUpdate:
-  // useEffect(() => {
-  //   // if props are changed, toggle will be true
-  //   if (props.colorChange === true) {
-  //     setToggle(true);
-  //   } else {
-  //     setToggle(false);
-  //   }
-  // });
   return (
     <div className={props.colorChange ? classes.rootChanged : classes.root}>
       <section className={classes.pageStyles}>

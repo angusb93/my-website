@@ -85,13 +85,13 @@ class App extends Component {
   }
 
   handlePageChange = (number) => {
-    // this.setState({ currentPage: number });
-    // console.log("handle page change =" + number);
+    this.setState({ currentPage: number });
+    console.log("handle page change =" + number);
   };
 
   handleBeforePageChange = (number) => {
     this.setState({ beforePagechange: number });
-    console.log("before page change =" + number);
+    // console.log("before page change =" + number);
   };
 
   render() {
@@ -103,7 +103,7 @@ class App extends Component {
             pageOnChange={this.handlePageChange}
             onBeforePageScroll={this.handleBeforePageChange}
             customPageNumber={this.state.currentPage}
-            animationTimer={600}
+            animationTimer={400}
           >
             <Heading />
             <Body
