@@ -82,16 +82,23 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { currentPage: null, beforePagechange: null };
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleBeforePageChange = this.handleBeforePageChange.bind(this);
   }
 
   handlePageChange = (number) => {
-    this.setState({ currentPage: number });
-    console.log("handle page change =" + number);
+    // this.setState({ currentPage: number });
+    // console.log("handle page change =" + number);
   };
 
   handleBeforePageChange = (number) => {
-    this.setState({ beforePagechange: number });
-    // console.log("before page change =" + number);
+    // if number has changed, then set state
+    // if (this.state.beforePagechange != number) {
+    //   this.setState({ beforePagechange: number }, () => {
+    //     console.log("num =" + number);
+    //     console.log("state=" + this.state.beforePagechange);
+    //   });
+    // }
   };
 
   render() {
