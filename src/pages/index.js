@@ -91,7 +91,7 @@ class App extends Component {
 
   handleBeforePageChange = (number) => {
     this.setState({ beforePagechange: number });
-    // console.log("before page change =" + number);
+    console.log("before page change =" + number);
   };
 
   render() {
