@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import thesis from "../../public/thesis.pdf";
+// import thesis from "../../public/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -132,7 +132,7 @@ export default function Body(props) {
         <h2 className={classes.headingStyles}>
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}
-            href={thesis}
+            href="google.com"
             target="_blank"
           >
             Find my resumé here

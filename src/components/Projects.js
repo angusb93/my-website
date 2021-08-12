@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import reactColors from "../images/reactColors.png";
 import yelpCamp from "../images/yelpCamp.png";
-import thesisImage from "../images/thesis.png";
+import thesisImage from "../images/thesisImage.png";
 // import thesis from "../../public/thesis.pdf";
-import thesis from "thesis.pdf";
+import thesis from "../images/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
