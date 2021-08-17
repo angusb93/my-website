@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { SocialIcon } from "react-social-icons";
 import andy from "../images/andy.png";
+import sizes from "./sizes";
 const useStyles = makeStyles({
   root: {
     margin: "0",
@@ -9,6 +10,11 @@ const useStyles = makeStyles({
     width: "100%",
     overflow: "hidden",
     color: "#232129",
+    backgroundImage: `url(${andy})`,
+    backgroundSize: "cover",
+    [sizes.down("md")]: {
+      backgroundImage: `none`,
+    },
   },
 
   pageStyles: {
@@ -20,10 +26,33 @@ const useStyles = makeStyles({
     justifyContent: "center",
     fontSize: "20px",
     color: "black",
+    [sizes.down("xl")]: {
+      width: "60%",
+    },
+    [sizes.down("lg")]: {
+      width: "80%",
+    },
+    [sizes.down("md")]: {
+      width: "90%",
+      fontSize: "20px",
+    },
+    [sizes.down("sm")]: {
+      width: "90%",
+      fontSize: "18px",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "14px",
+    },
   },
   headingStyles: {
     fontSize: "3rem",
     paddingTop: "4rem",
+    [sizes.down("md")]: {
+      fontSize: "3rem",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "2rem",
+    },
   },
 
   buickStyles: {
@@ -33,14 +62,21 @@ const useStyles = makeStyles({
   },
   subheading: {
     fontSize: "4rem",
+    padding: "2rem",
+    [sizes.down("md")]: {
+      fontSize: "3rem",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "2rem",
+    },
   },
   icons: {
     marginLeft: "10px",
   },
   myHead: {
     position: "fixed",
+    width: "100%",
     marginLeft: "2rem",
-    paddingTop: "-4rem",
     opacity: "0.8",
   },
   contact: {
@@ -70,7 +106,7 @@ const Heading = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <img className={classes.myHead} src={andy} alt="" />
+      {/* <img className={classes.myHead} src={andy} alt="" /> */}
       <div className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>
           <div>ANGUS </div>

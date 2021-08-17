@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import sizes from "./sizes";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
@@ -21,21 +22,63 @@ const useStyles = makeStyles((theme) => ({
   },
   pageStyles: {
     margin: "auto",
-    paddingTop: "5rem",
+    // paddingTop: "5rem",
     display: "flex",
     width: "40%",
     flexDirection: "column",
     justifyContent: "center",
     fontSize: "25px",
+    [sizes.down("xl")]: {
+      width: "60%",
+    },
+    [sizes.down("lg")]: {
+      width: "80%",
+    },
+    [sizes.down("md")]: {
+      width: "90%",
+      fontSize: "20px",
+    },
+    [sizes.down("sm")]: {
+      width: "90%",
+      fontSize: "18px",
+      top: "0",
+      bottom: "0",
+      left: "0",
+      right: "0",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "14px",
+    },
   },
   paragraphStyles: {
     margin: "auto",
     marginBottom: "1rem",
+    [sizes.down("sm")]: {
+      margin: "0.5rem",
+    },
+    [sizes.down("xs")]: {
+      margin: "0.2rem",
+    },
+  },
+  listStyles: {
+    // margin: "auto",
+    // marginBottom: "1rem",
+    [sizes.down("sm")]: {
+      margin: "0rem",
+      paddingLeft: "1.4rem",
+    },
   },
   headingStyles: {
     textAlign: "left",
     fontSize: "40px",
     marginBottom: "1rem",
+    [sizes.down("sm")]: {
+      fontSize: "30px",
+      margin: "0.3rem",
+    },
+    [sizes.down("xs")]: {
+      fontSize: "20px",
+    },
   },
   link: {
     color: "black",
@@ -86,6 +129,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Body(props) {
   const classes = useStyles();
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 700;
+  useEffect(() => {
+    const handleResizeWindow = () => setWidth(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  }, []);
   return (
     <div className={props.colorChange ? classes.rootChanged : classes.root}>
       <section className={classes.pageStyles}>
@@ -109,15 +163,20 @@ export default function Body(props) {
           </b>
         </p>
 
-        <h2 className={classes.headingStyles}>Education</h2>
-        <ul className={classes.paragraphStyles}>
-          <li>
-            Macquarie University - Bachelor of Engineering (Mechatronic)(Hons)
-          </li>
-          <li>UNSW - Graduate Certificate in Computing</li>
-          <li>Udemy - The Web Developer Bootcamp 2021</li>
-          <li>Udemy - The Modern React Bootcamp 2021</li>
-        </ul>
+        {width > breakpoint && (
+          <React.Fragment>
+            <h2 className={classes.headingStyles}>Education</h2>
+            <ul className={classes.listStyles}>
+              <li>
+                Macquarie University - Bachelor of Engineering
+                (Mechatronic)(Hons)
+              </li>
+              <li>UNSW - Graduate Certificate in Computing</li>
+              <li>Udemy - The Web Developer Bootcamp 2021</li>
+              <li>Udemy - The Modern React Bootcamp 2021</li>
+            </ul>
+          </React.Fragment>
+        )}
         <h2 className={classes.headingStyles}>
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}
