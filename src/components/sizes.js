@@ -2,6 +2,7 @@ const method = {
   up() {},
   down(size) {
     const sizes = {
+      xxs: "400px",
       xs: "576px",
       sm: "700px",
       md: "992px",

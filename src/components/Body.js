@@ -36,18 +36,14 @@ const useStyles = makeStyles((theme) => ({
     },
     [sizes.down("md")]: {
       width: "90%",
-      fontSize: "20px",
+      fontSize: "22px",
     },
-    [sizes.down("sm")]: {
-      width: "90%",
-      fontSize: "18px",
-      top: "0",
-      bottom: "0",
-      left: "0",
-      right: "0",
-    },
+    [sizes.down("sm")]: {},
     [sizes.down("xs")]: {
-      fontSize: "14px",
+      fontSize: "18px",
+    },
+    [sizes.down("xxs")]: {
+      fontSize: "15px",
     },
   },
   paragraphStyles: {
@@ -73,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "40px",
     marginBottom: "1rem",
     [sizes.down("sm")]: {
-      fontSize: "30px",
+      fontSize: "35px",
       margin: "0.3rem",
     },
     [sizes.down("xs")]: {

@@ -12,6 +12,10 @@ const useStyles = makeStyles({
     color: "#232129",
     backgroundImage: `url(${andy})`,
     backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    [sizes.down("lg")]: {
+      backgroundSize: "1400px",
+    },
     [sizes.down("md")]: {
       backgroundImage: `none`,
     },
@@ -33,12 +37,13 @@ const useStyles = makeStyles({
       width: "80%",
     },
     [sizes.down("md")]: {
-      width: "90%",
+      // width: "90%",
       fontSize: "20px",
     },
     [sizes.down("sm")]: {
-      width: "90%",
+      // width: "90%",
       fontSize: "18px",
+      paddingTop: "4rem",
     },
     [sizes.down("xs")]: {
       fontSize: "14px",
@@ -48,10 +53,17 @@ const useStyles = makeStyles({
     fontSize: "3rem",
     paddingTop: "4rem",
     [sizes.down("md")]: {
-      fontSize: "3rem",
+      fontSize: "4rem",
+    },
+    [sizes.down("sm")]: {
+      paddingTop: "2rem",
     },
     [sizes.down("xs")]: {
       fontSize: "2rem",
+      paddingTop: "0rem",
+    },
+    [sizes.down("xxs")]: {
+      fontSize: "1.5rem",
     },
   },
 
@@ -59,12 +71,18 @@ const useStyles = makeStyles({
     paddingLeft: "6rem",
     lineHeight: "30%",
     justifyContent: "center",
+    [sizes.down("xs")]: {
+      paddingLeft: "4rem",
+    },
   },
   subheading: {
     fontSize: "4rem",
     padding: "2rem",
     [sizes.down("md")]: {
-      fontSize: "3rem",
+      fontSize: "4rem",
+    },
+    [sizes.down("sm")]: {
+      padding: "1rem",
     },
     [sizes.down("xs")]: {
       fontSize: "2rem",
@@ -91,7 +109,16 @@ const useStyles = makeStyles({
     },
   },
   svg: {
-    float: "left",
+    //scale to half size
+    [sizes.down("sm")]: {
+      transform: "scale(0.9)",
+    },
+    [sizes.down("xs")]: {
+      transform: "scale(0.9)",
+    },
+    [sizes.down("xxs")]: {
+      transform: "scale(0.8)",
+    },
   },
   "@keyframes loop": {
     "0%": { transform: "rotate(0deg)" },
@@ -131,7 +158,12 @@ const Heading = () => {
           target="_blank"
           rel="noreferrer"
         >
-          <svg viewBox="0 0 120 120" width="100%" length="auto">
+          <svg
+            className={classes.svg}
+            viewBox="0 0 120 120"
+            width="100%"
+            length="auto"
+          >
             <defs>
               <path
                 id="circle"

@@ -54,6 +54,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "30px",
       margin: "0.4rem",
     },
+    [sizes.down("xs")]: {
+      fontSize: "22px",
+      margin: "0.2rem",
+    },
   },
   link: {
     // backgroundColor: "rgba(30,143,235,0.5)",
