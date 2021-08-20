@@ -15,14 +15,14 @@ import thesis from "../images/thesis.pdf";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
-    height: "100%",
-    width: "100%",
+    height: "100vh",
+    width: "100vw",
     overflow: "hidden",
     background: "white",
   },
   pageStyles: {
     margin: "auto",
-    // paddingTop: "5rem",
+    paddingTop: "3rem",
     display: "flex",
     width: "40%",
     fontSize: "20px",

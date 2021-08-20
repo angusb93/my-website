@@ -5,15 +5,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
     height: "100%",
-    width: "100%",
+    width: "100vw",
     overflow: "hidden",
     background: "white",
     transition: "all 400ms cubic-bezier(0, 0.8, 0.13, 1)",
   },
   rootChanged: {
     margin: "0",
-    height: "100%",
-    width: "100%",
+    height: "100vh",
+    width: "100vw",
     overflow: "hidden",
     background: "rgb(40,39,37,1)",
     transitionDelay: "400ms",
@@ -159,20 +159,19 @@ export default function Body(props) {
           </b>
         </p>
 
-        {width > breakpoint && (
-          <React.Fragment>
-            <h2 className={classes.headingStyles}>Education</h2>
-            <ul className={classes.listStyles}>
-              <li>
-                Macquarie University - Bachelor of Engineering
-                (Mechatronic)(Hons)
-              </li>
-              <li>UNSW - Graduate Certificate in Computing</li>
-              <li>Udemy - The Web Developer Bootcamp 2021</li>
-              <li>Udemy - The Modern React Bootcamp 2021</li>
-            </ul>
-          </React.Fragment>
-        )}
+        {/* {width > breakpoint && (
+          <React.Fragment> */}
+        <h2 className={classes.headingStyles}>Education</h2>
+        <ul className={classes.listStyles}>
+          <li>
+            Macquarie University - Bachelor of Engineering (Mechatronic)(Hons)
+          </li>
+          <li>UNSW - Graduate Certificate in Computing</li>
+          <li>Udemy - The Web Developer Bootcamp 2021</li>
+          <li>Udemy - The Modern React Bootcamp 2021</li>
+        </ul>
+        {/* </React.Fragment>
+        )} */}
         <h2 className={classes.headingStyles}>
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}

@@ -6,8 +6,8 @@ import sizes from "./sizes";
 const useStyles = makeStyles({
   root: {
     margin: "0",
-    height: "100%",
-    width: "100%",
+    height: "100vh",
+    width: "100vw",
     overflow: "hidden",
     color: "#232129",
     backgroundImage: `url(${andy})`,
@@ -135,12 +135,8 @@ const Heading = () => {
     <div className={classes.root}>
       {/* <img className={classes.myHead} src={andy} alt="" /> */}
       <div className={classes.pageStyles}>
-        <h2 className={classes.headingStyles}>
-          <div>ANGUS </div>
-          <div className={classes.buickStyles}>BUICK</div>
-        </h2>
         <h1 className={classes.subheading}>
-          I'm an aspiring creative <br /> technologist.
+          Hi, I'm Angus. <br /> An aspiring creative technologist.
         </h1>
         {/* Say hello here →
           <SocialIcon

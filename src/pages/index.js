@@ -106,18 +106,18 @@ class App extends Component {
     return (
       <React.Fragment>
         <main className={classes.root}>
-          <ReactPageScroller
+          {/* <ReactPageScroller
             pageOnChange={this.handlePageChange}
             onBeforePageScroll={this.handleBeforePageChange}
             customPageNumber={this.state.currentPage}
             animationTimer={400}
-          >
-            <Heading />
-            <Body
-              colorChange={this.state.beforePagechange === 1 ? true : false}
-            />
-            <Projects />
-          </ReactPageScroller>
+          > */}
+          <Heading />
+          <Body
+            colorChange={this.state.beforePagechange === 1 ? true : false}
+          />
+          <Projects />
+          {/* </ReactPageScroller> */}
           <div />
           <div className={classes.noise}></div>
         </main>
