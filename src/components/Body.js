@@ -4,11 +4,11 @@ import sizes from "./sizes";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
-    height: "100%",
+    height: "100vh",
     width: "100vw",
-    overflow: "hidden",
+    // overflow: "hidden",
     background: "white",
-    transition: "all 400ms cubic-bezier(0, 0.8, 0.13, 1)",
+    transition: "all 650ms ease-in-out",
   },
   rootChanged: {
     margin: "0",
@@ -16,8 +16,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100vw",
     overflow: "hidden",
     background: "rgb(40,39,37,1)",
-    transitionDelay: "400ms",
-    transition: "all 600ms cubic-bezier(0.13, 0.8, 0, 1)",
+    transition: "all 650ms ease-in-out",
     color: "rgb(249,205,205)",
   },
   pageStyles: {
@@ -80,7 +79,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     textDecoration: "none",
     position: "relative",
-
+    transition: "all 650ms ease-in-out",
     "&::after": {
       content: "''",
       position: "absolute",
@@ -103,6 +102,7 @@ const useStyles = makeStyles((theme) => ({
     color: "rgb(249,205,205)",
     textDecoration: "none",
     position: "relative",
+    transition: "all 650ms ease-in-out",
     "&::after": {
       content: "''",
       position: "absolute",
@@ -123,19 +123,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Body(props) {
+const Body = (props) => {
   const classes = useStyles();
-  const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 700;
-  useEffect(() => {
-    const handleResizeWindow = () => setWidth(window.innerWidth);
-    // subscribe to window resize event "onComponentDidMount"
-    window.addEventListener("resize", handleResizeWindow);
-    return () => {
-      // unsubscribe "onComponentDestroy"
-      window.removeEventListener("resize", handleResizeWindow);
-    };
-  }, []);
+
   return (
     <div className={props.colorChange ? classes.rootChanged : classes.root}>
       <section className={classes.pageStyles}>
@@ -184,4 +174,5 @@ export default function Body(props) {
       </section>
     </div>
   );
-}
+};
+export default Body;

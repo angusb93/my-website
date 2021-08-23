@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { SocialIcon } from "react-social-icons";
+// import { SocialIcon } from "react-social-icons";
 import andy from "../images/andy.png";
 import sizes from "./sizes";
 const useStyles = makeStyles({
@@ -13,6 +13,22 @@ const useStyles = makeStyles({
     backgroundImage: `url(${andy})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    transition: "all 650ms ease-in-out",
+
+    [sizes.down("lg")]: {
+      backgroundSize: "1400px",
+    },
+    [sizes.down("md")]: {
+      backgroundImage: `none`,
+    },
+  },
+  rootChanged: {
+    margin: "0",
+    height: "100vh",
+    width: "100vw",
+    color: "#232129",
+    background: "rgb(40,39,37,1)",
+    transition: "all 650ms ease-in-out",
     [sizes.down("lg")]: {
       backgroundSize: "1400px",
     },
@@ -129,10 +145,10 @@ const useStyles = makeStyles({
     "100%": { transform: "scale(0.45)" },
   },
 });
-const Heading = () => {
+const Heading = (props) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={props.colorChange ? classes.rootChanged : classes.root}>
       {/* <img className={classes.myHead} src={andy} alt="" /> */}
       <div className={classes.pageStyles}>
         <h1 className={classes.subheading}>

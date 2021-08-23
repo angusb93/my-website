@@ -18,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
     width: "100vw",
     overflow: "hidden",
-    background: "white",
+    // background: "white",
+    background: "rgb(40,39,37,1)",
+    transitionDelay: "400ms",
+    transition: "all 650ms ease-in-out",
+    color: "rgb(249,205,205)",
   },
   pageStyles: {
     margin: "auto",
@@ -44,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
     justifyContent: "center",
-    color: "black",
   },
   headingStyles: {
     textAlign: "left",
@@ -60,8 +63,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    // backgroundColor: "rgba(30,143,235,0.5)",
-    color: "black",
+    color: "rgb(249,205,205)",
+    // color: "black",
     textDecoration: "none",
     position: "relative",
     "&::after": {
