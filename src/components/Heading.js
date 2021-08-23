@@ -67,7 +67,7 @@ const useStyles = makeStyles({
   },
   headingStyles: {
     fontSize: "3rem",
-    paddingTop: "4rem",
+    paddingTop: "10rem",
     [sizes.down("md")]: {
       fontSize: "4rem",
     },
@@ -82,18 +82,10 @@ const useStyles = makeStyles({
       fontSize: "1.5rem",
     },
   },
-
-  buickStyles: {
-    paddingLeft: "6rem",
-    lineHeight: "30%",
-    justifyContent: "center",
-    [sizes.down("xs")]: {
-      paddingLeft: "4rem",
-    },
-  },
   subheading: {
     fontSize: "4rem",
     padding: "2rem",
+    paddingTop: "5rem",
     [sizes.down("md")]: {
       fontSize: "4rem",
     },
@@ -106,12 +98,6 @@ const useStyles = makeStyles({
   },
   icons: {
     marginLeft: "10px",
-  },
-  myHead: {
-    position: "fixed",
-    width: "100%",
-    marginLeft: "2rem",
-    opacity: "0.8",
   },
   contact: {
     width: "200px",
