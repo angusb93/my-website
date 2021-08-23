@@ -69,20 +69,26 @@ class App extends Component {
     this.state = {
       windowYPos: 0,
       colorTrigger: false,
-      windowH: window.innerHeight,
+      windowH: 0,
     };
   }
   componentDidMount() {
+    this.handleWindowSizeChange(); // Set width
+    window.addEventListener("resize", this.handleWindowSizeChange);
     window.addEventListener("scroll", this.handleScroll, true);
   }
 
   componentWillUnmount() {
+    window.removeEventListener("resize", this.handleWindowSizeChange);
     window.removeEventListener("scroll", this.handleScroll);
   }
+  handleWindowSizeChange = () => {
+    this.setState({ windowH: window.innerHeight });
+  };
   handleScroll = () => {
     this.setState({ windowYPos: window.scrollY });
     console.log(this.state.windowYPos, this.state.windowH);
-    if (this.state.windowYPos > this.state.windowH - 200) {
+    if (this.state.windowYPos > this.state.windowH - 150) {
       this.setState({ colorTrigger: true });
     } else if (this.state.windowYPos < this.state.windowH) {
       this.setState({ colorTrigger: false });
