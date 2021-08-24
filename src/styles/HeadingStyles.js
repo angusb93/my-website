@@ -65,8 +65,9 @@ const useStyles = makeStyles({
     },
   },
   headingStyles: {
-    fontSize: "3rem",
+    fontSize: "2rem",
     paddingTop: "10rem",
+    textTransform: "uppercase",
     [sizes.down("md")]: {
       fontSize: "4rem",
     },
@@ -103,8 +104,9 @@ const useStyles = makeStyles({
     position: "absolute",
     marginTop: "40rem",
     display: "inline-block",
-    animation: "$loop 10s linear infinite",
+    animation: "$loop 80s linear infinite",
     transition: "all 300ms cubic-bezier(0, 0.8, 0.13, 1)",
+    textTransform: "uppercase",
     "&:hover": {
       fill: "#1e8feb",
     },

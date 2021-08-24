@@ -11,7 +11,7 @@ const Heading = (props) => {
           Hi, I'm Angus. An aspiring <br />
           <Typewriter
             words={[" creative technologist.", " front-end web developer."]}
-            loop={1}
+            loop={0}
             cursor
             cursorStyle="|"
             typeSpeed={70}
@@ -40,9 +40,11 @@ const Heading = (props) => {
                 a 37,37 0 1,1 -94,0"
               />
             </defs>
-            <text fontSize="17">
+            <text fontSize="11">
               <textPath href="#circle">
-                Contact &nbsp; Contact &nbsp; Contact &nbsp; Contact
+                Contact &nbsp;&nbsp;&nbsp;&nbsp; Contact
+                &nbsp;&nbsp;&nbsp;&nbsp; Contact &nbsp;&nbsp;&nbsp;&nbsp;
+                Contact
               </textPath>
             </text>
           </svg>

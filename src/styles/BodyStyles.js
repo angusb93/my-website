@@ -65,7 +65,8 @@ const useStyles = makeStyles((theme) => ({
   },
   headingStyles: {
     textAlign: "left",
-    fontSize: "40px",
+    fontSize: "25px",
+    textTransform: "uppercase",
     marginBottom: "1rem",
     [sizes.down("sm")]: {
       fontSize: "35px",
