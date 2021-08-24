@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
     background: "rgb(40,39,37,1)",
     transition: "all 650ms ease-in-out",
-    color: "rgb(249,205,205)",
+    // color: "rgb(249,205,205)",
+    color: "white",
   },
   pageStyles: {
     margin: "auto",
@@ -99,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   linkChanged: {
-    color: "rgb(249,205,205)",
+    color: "white",
     textDecoration: "none",
     position: "relative",
     transition: "all 650ms ease-in-out",

@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     background: "rgb(40,39,37,1)",
     transitionDelay: "400ms",
     transition: "all 650ms ease-in-out",
-    color: "rgb(249,205,205)",
+    color: "white",
   },
   pageStyles: {
     margin: "auto",
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    color: "rgb(249,205,205)",
+    color: "white",
     // color: "black",
     textDecoration: "none",
     position: "relative",
@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   projectCard: {
-    border: "2px solid rgb(30,143,235)",
+    border: "2px solid white",
     padding: "1rem",
     borderRadius: "10px",
     marginBottom: "1rem",
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     width: "300px",
     // float: "right",
     display: "flex",
-    border: "2px solid rgb(30,143,235)",
+    border: "2px solid white",
     borderRadius: "10px",
     transform: "scale(0.95)",
     transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
