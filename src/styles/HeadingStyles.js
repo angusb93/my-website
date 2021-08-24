@@ -67,7 +67,6 @@ const useStyles = makeStyles({
   headingStyles: {
     fontSize: "2rem",
     paddingTop: "10rem",
-    textTransform: "uppercase",
     [sizes.down("md")]: {
       fontSize: "4rem",
     },

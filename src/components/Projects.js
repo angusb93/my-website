@@ -26,6 +26,13 @@ export default function Projects() {
           </h4>
 
           <p className={classes.projectParagraph}>
+            <a
+              href="https://angus-color-picker.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img className={classes.images} src={reactColors} alt="" />
+            </a>
             <div className={classes.projectText}>
               Color picker is a clone of 'flat ui colors' that allows you to
               create color palettes to be used in any digital creative endevour.
@@ -35,13 +42,6 @@ export default function Projects() {
               Udemy, taught by Colte Steele. It uses React, React-Router and
               Material UI.
             </div>
-            <a
-              href="https://angus-color-picker.netlify.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img className={classes.images} src={reactColors} alt="" />
-            </a>
           </p>
         </div>
         <div className={classes.projectCard}>
