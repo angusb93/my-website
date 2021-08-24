@@ -1,135 +1,12 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+
 import reactColors from "../images/reactColors.png";
 import yelpCamp from "../images/yelpCamp.png";
 import thesisImage from "../images/thesisImage.png";
-import sizes from "./sizes";
+import useStyles from "../styles/ProjectStyles";
 import thesis from "../images/thesis.pdf";
+import { SocialIcon } from "react-social-icons";
 
-// [sizes.down("xl")]: {
-//   fontSize: "3rem",
-// },
-// [sizes.down("xs")]: {
-//   fontSize: "3rem",
-// },
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: "0",
-    height: "100vh",
-    width: "100vw",
-    overflow: "hidden",
-    // background: "white",
-    background: "rgb(40,39,37,1)",
-    transitionDelay: "400ms",
-    transition: "all 650ms ease-in-out",
-    color: "white",
-  },
-  pageStyles: {
-    margin: "auto",
-    paddingTop: "3rem",
-    display: "flex",
-    width: "40%",
-    fontSize: "20px",
-    flexDirection: "column",
-    [sizes.down("xl")]: {
-      width: "60%",
-    },
-    [sizes.down("lg")]: {
-      width: "80%",
-    },
-    [sizes.down("md")]: {
-      width: "90%",
-      fontSize: "16px",
-    },
-    [sizes.down("sm")]: {
-      width: "90%",
-      fontSize: "14px",
-      // flexDirection: "row",
-    },
-
-    justifyContent: "center",
-  },
-  headingStyles: {
-    textAlign: "left",
-    fontSize: "40px",
-    margin: "0.6rem",
-    [sizes.down("sm")]: {
-      fontSize: "30px",
-      margin: "0.4rem",
-    },
-    [sizes.down("xs")]: {
-      fontSize: "22px",
-      margin: "0.2rem",
-    },
-  },
-  link: {
-    color: "white",
-    // color: "black",
-    textDecoration: "none",
-    position: "relative",
-    "&::after": {
-      content: "''",
-      position: "absolute",
-      zIndex: "1",
-      top: "60%",
-      left: "-0.1em",
-      right: "-0.1em",
-      bottom: "0",
-      transition: "top 200ms cubic-bezier(0, 0.8, 0.13, 1)",
-      backgroundColor: "rgba(30,143,235,0.5)",
-    },
-    //rule that makes background halfway and then goes up to max once mouse is over
-    "&:hover": {
-      "&:after": {
-        top: "0%",
-      },
-    },
-  },
-
-  projectCard: {
-    border: "2px solid white",
-    padding: "1rem",
-    borderRadius: "10px",
-    marginBottom: "1rem",
-    [sizes.down("sm")]: {
-      margin: "0.3rem",
-      padding: "0.3rem",
-    },
-  },
-  projectCardTitles: {
-    margin: "0",
-  },
-  projectParagraph: {
-    // float: "left",
-    display: "flex",
-    [sizes.down("sm")]: {
-      flexDirection: "column",
-      margin: "0.3rem",
-    },
-  },
-  projectText: {
-    [sizes.down("sm")]: {
-      display: "none",
-    },
-  },
-  images: {
-    width: "300px",
-    // float: "right",
-    display: "flex",
-    border: "2px solid white",
-    borderRadius: "10px",
-    transform: "scale(0.95)",
-    transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
-    [sizes.down("sm")]: {
-      width: "70%",
-      margin: "auto",
-    },
-
-    "&:hover": {
-      transform: "scale(1)",
-    },
-  },
-}));
 export default function Projects() {
   const classes = useStyles();
   return (
@@ -155,7 +32,8 @@ export default function Projects() {
               It allows you to select which format you would like from HEX, RGB
               and RGBA. As well as change the shade. This project was completed
               through the "Modern React Bootcamp" course that I completed on
-              Udemy. It uses React Router and Material UI.
+              Udemy, taught by Colte Steele. It uses React, React-Router and
+              Material UI.
             </div>
             <a
               href="https://angus-color-picker.netlify.app/"
@@ -220,6 +98,23 @@ export default function Projects() {
             </a>
           </p>
         </div>
+        <footer className={classes.footer}>
+          <SocialIcon
+            url="https://www.linkedin.com/in/angusbuick/"
+            className={classes.icons}
+            target="_blank"
+            rel="noreferrer"
+          />
+          <SocialIcon
+            url="https://github.com/angusb93"
+            bgColor="white"
+            className={classes.icons}
+            target="_blank"
+            rel="noreferrer"
+          />
+          <br />
+          Angus Buick © 2021
+        </footer>
       </section>
     </div>
   );
