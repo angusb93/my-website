@@ -3,22 +3,10 @@ import sizes from "./sizes";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0",
-    height: "100vh",
+    height: "100%",
     width: "100vw",
-    // overflow: "hidden",
-    background: "white",
-    transition: "all 650ms ease-in-out",
   },
-  rootChanged: {
-    margin: "0",
-    height: "100vh",
-    width: "100vw",
-    overflow: "hidden",
-    background: "rgb(40,39,37,1)",
-    transition: "all 650ms ease-in-out",
-    // color: "rgb(249,205,205)",
-    color: "white",
-  },
+
   pageStyles: {
     margin: "auto",
     // paddingTop: "5rem",
@@ -67,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontSize: "25px",
     textTransform: "uppercase",
+    letterSpacing: "10%",
     marginBottom: "1rem",
     [sizes.down("sm")]: {
       fontSize: "35px",

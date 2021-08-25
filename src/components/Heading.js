@@ -5,7 +5,7 @@ import useStyles from "../styles/HeadingStyles";
 const Heading = (props) => {
   const classes = useStyles();
   return (
-    <div className={props.colorChange ? classes.rootChanged : classes.root}>
+    <div className={classes.root}>
       <div className={classes.pageStyles}>
         <h1 className={classes.subheading}>
           Hi, I'm Angus. An aspiring <br />
@@ -42,8 +42,7 @@ const Heading = (props) => {
             </defs>
             <text fontSize="11">
               <textPath href="#circle">
-                Contact &nbsp;&nbsp;&nbsp;&nbsp; Contact
-                &nbsp;&nbsp;&nbsp;&nbsp; Contact &nbsp;&nbsp;&nbsp;&nbsp;
+                Contact &nbsp;&nbsp; Contact &nbsp;&nbsp; Contact &nbsp;&nbsp;
                 Contact
               </textPath>
             </text>

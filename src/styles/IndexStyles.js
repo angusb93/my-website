@@ -16,6 +16,20 @@ const styles = {
     height: "100%",
     width: "100%",
     overflow: "hidden",
+    transition: "all 650ms ease-in-out",
+  },
+  rootChanged: {
+    color: "white",
+    fontFamily: "Roboto Mono",
+    background: "rgb(40,39,37,1)",
+    padding: "0",
+    display: "flex",
+    flexDirection: "column",
+    margin: "0",
+    height: "100%",
+    width: "100%",
+    overflow: "hidden",
+    transition: "all 650ms ease-in-out",
   },
 
   "@keyframes noise": {

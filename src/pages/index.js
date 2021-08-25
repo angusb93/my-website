@@ -41,7 +41,9 @@ class App extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <main className={classes.root}>
+      <main
+        className={this.state.colorTrigger ? classes.rootChanged : classes.root}
+      >
         <Heading colorChange={this.state.colorTrigger} />
         <Body colorChange={this.state.colorTrigger} />
         <Projects />

@@ -12,22 +12,7 @@ const useStyles = makeStyles({
     backgroundImage: `url(${andy})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    transition: "all 650ms ease-in-out",
 
-    [sizes.down("lg")]: {
-      backgroundSize: "1400px",
-    },
-    [sizes.down("md")]: {
-      backgroundImage: `none`,
-    },
-  },
-  rootChanged: {
-    margin: "0",
-    height: "100vh",
-    width: "100vw",
-    color: "#232129",
-    background: "rgb(40,39,37,1)",
-    transition: "all 650ms ease-in-out",
     [sizes.down("lg")]: {
       backgroundSize: "1400px",
     },
@@ -43,7 +28,7 @@ const useStyles = makeStyles({
     width: "50%",
     flexDirection: "column",
     justifyContent: "center",
-    fontSize: "20px",
+    fontSize: "18px",
     color: "black",
     [sizes.down("xl")]: {
       width: "60%",
@@ -64,25 +49,8 @@ const useStyles = makeStyles({
       fontSize: "14px",
     },
   },
-  headingStyles: {
-    fontSize: "2rem",
-    paddingTop: "10rem",
-    [sizes.down("md")]: {
-      fontSize: "4rem",
-    },
-    [sizes.down("sm")]: {
-      paddingTop: "2rem",
-    },
-    [sizes.down("xs")]: {
-      fontSize: "2rem",
-      paddingTop: "0rem",
-    },
-    [sizes.down("xxs")]: {
-      fontSize: "1.5rem",
-    },
-  },
   subheading: {
-    fontSize: "4rem",
+    fontSize: "3.5rem",
     padding: "2rem",
     paddingTop: "5rem",
     [sizes.down("md")]: {
