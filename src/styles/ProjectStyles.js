@@ -34,7 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
   headingStyles: {
     textAlign: "left",
-    fontSize: "40px",
+    fontSize: "25px",
+    letterSpacing: "3px",
+    textTransform: "uppercase",
     margin: "0.6rem",
     [sizes.down("sm")]: {
       fontSize: "30px",
@@ -81,6 +83,8 @@ const useStyles = makeStyles((theme) => ({
   },
   projectCardTitles: {
     margin: "0",
+    letterSpacing: "3px",
+    textTransform: "uppercase",
   },
   projectParagraph: {
     // float: "left",
@@ -98,10 +102,10 @@ const useStyles = makeStyles((theme) => ({
   images: {
     width: "300px",
     // float: "right",
-    marginLeft: "1rem",
+    marginRight: "1rem",
     display: "flex",
     border: "2px solid white",
-    borderRadius: "10px",
+    borderRadius: "5px",
     transform: "scale(0.95)",
     transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
     [sizes.down("sm")]: {
@@ -119,6 +123,10 @@ const useStyles = makeStyles((theme) => ({
   },
   icons: {
     margin: "10px",
+    transform: "scale(0.9)",
+    "&:hover": {
+      transform: "scale(1)",
+    },
   },
 }));
 export default useStyles;

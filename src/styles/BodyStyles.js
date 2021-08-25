@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     fontSize: "25px",
     textTransform: "uppercase",
-    letterSpacing: "10%",
+    letterSpacing: "3px",
     marginBottom: "1rem",
     [sizes.down("sm")]: {
       fontSize: "35px",

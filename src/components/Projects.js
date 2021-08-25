@@ -57,6 +57,13 @@ export default function Projects() {
           </h4>
 
           <p className={classes.projectParagraph}>
+            <a
+              href="https://angus-yelpcamp.herokuapp.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img className={classes.images} src={yelpCamp} alt="" />
+            </a>
             <div className={classes.projectText}>
               YelpCamp is a site where you can login and post campsites with
               images and locations. Other users can view the campsites and post
@@ -65,13 +72,6 @@ export default function Projects() {
               popular "Web Developer Bootcamp 2021" course on Udemy, taught by
               Colt Steele.
             </div>
-            <a
-              href="https://angus-yelpcamp.herokuapp.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img className={classes.images} src={yelpCamp} alt="" />
-            </a>
           </p>
         </div>
         <div className={classes.projectCard}>
@@ -87,20 +87,21 @@ export default function Projects() {
           </h4>
 
           <p className={classes.projectParagraph}>
+            <a href={thesis} target="_blank" rel="noreferrer">
+              <img className={classes.images} src={thesisImage} alt="" />
+            </a>
             <div className={classes.projectText}>
               The thesis I completed for my engineering honors year was titled
               "Autonomous Automotive Wind Tunnel Model". I explored different
               control systems and methodolgies for keeping a minature model
               "driving" by itself on a moving ground within a wind tunnel.
             </div>
-            <a href={thesis} target="_blank" rel="noreferrer">
-              <img className={classes.images} src={thesisImage} alt="" />
-            </a>
           </p>
         </div>
         <footer className={classes.footer}>
           <SocialIcon
             url="https://www.linkedin.com/in/angusbuick/"
+            bgColor="white"
             className={classes.icons}
             target="_blank"
             rel="noreferrer"
