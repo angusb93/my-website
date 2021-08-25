@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: "40%",
     flexDirection: "column",
     justifyContent: "center",
-    fontSize: "25px",
+    fontSize: "20px",
     [sizes.down("xl")]: {
       width: "60%",
     },
@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
     },
     [sizes.down("md")]: {
       width: "90%",
-      fontSize: "22px",
+      fontSize: "18px",
     },
     [sizes.down("sm")]: {},
     [sizes.down("xs")]: {
-      fontSize: "18px",
+      fontSize: "16px",
     },
     [sizes.down("xxs")]: {
-      fontSize: "15px",
+      fontSize: "14px",
     },
   },
   paragraphStyles: {

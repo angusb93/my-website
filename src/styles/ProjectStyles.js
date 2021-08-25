@@ -124,8 +124,10 @@ const useStyles = makeStyles((theme) => ({
   icons: {
     margin: "10px",
     transform: "scale(0.9)",
+    transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
     "&:hover": {
       transform: "scale(1)",
+      transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
     },
   },
 }));
