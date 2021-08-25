@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "@fontsource/noto-sans-jp";
+import "@fontsource/roboto-mono";
 
 import Heading from "../components/Heading";
 import Body from "../components/Body";

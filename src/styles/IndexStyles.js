@@ -8,7 +8,7 @@ const styles = {
   },
   root: {
     color: "#232129",
-    fontFamily: "Noto Sans JP",
+    fontFamily: "Roboto Mono",
     padding: "0",
     display: "flex",
     flexDirection: "column",
