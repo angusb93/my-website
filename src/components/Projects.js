@@ -7,7 +7,7 @@ import useStyles from "../styles/ProjectStyles";
 import thesis from "../images/thesis.pdf";
 import { SocialIcon } from "react-social-icons";
 
-export default function Projects() {
+export default function Projects(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -16,7 +16,7 @@ export default function Projects() {
         <div className={classes.projectCard}>
           <h4 className={classes.projectCardTitles}>
             <a
-              className={classes.link}
+              className={props.colorChange ? classes.linkChanged : classes.link}
               href="https://angus-color-picker.netlify.app/"
               target="_blank"
               rel="noreferrer"
@@ -47,7 +47,7 @@ export default function Projects() {
         <div className={classes.projectCard}>
           <h4 className={classes.projectCardTitles}>
             <a
-              className={classes.link}
+              className={props.colorChange ? classes.linkChanged : classes.link}
               href="https://angus-yelpcamp.herokuapp.com/"
               target="_blank"
               rel="noreferrer"
@@ -77,7 +77,7 @@ export default function Projects() {
         <div className={classes.projectCard}>
           <h4 className={classes.projectCardTitles}>
             <a
-              className={classes.link}
+              className={props.colorChange ? classes.linkChanged : classes.link}
               href={thesis}
               target="_blank"
               rel="noreferrer"

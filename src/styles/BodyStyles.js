@@ -108,6 +108,7 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       "&:after": {
         top: "0%",
+        // text is half white and half black changes on hover
       },
     },
   },

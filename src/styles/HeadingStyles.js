@@ -75,7 +75,7 @@ const useStyles = makeStyles({
     transition: "all 300ms cubic-bezier(0, 0.8, 0.13, 1)",
     textTransform: "uppercase",
     "&:hover": {
-      fill: "#1e8feb",
+      fill: "rgb(10,123,215)",
     },
   },
   svg: {

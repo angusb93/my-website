@@ -46,7 +46,7 @@ class App extends Component {
       >
         <Heading colorChange={this.state.colorTrigger} />
         <Body colorChange={this.state.colorTrigger} />
-        <Projects />
+        <Projects colorChange={this.state.colorTrigger} />
         <div className={classes.noise} />
       </main>
     );

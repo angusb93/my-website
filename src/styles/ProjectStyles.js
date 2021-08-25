@@ -48,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   link: {
-    color: "white",
-    // color: "black",
+    color: "black",
     textDecoration: "none",
     position: "relative",
+    transition: "all 650ms ease-in-out",
     "&::after": {
       content: "''",
       position: "absolute",
@@ -64,6 +64,28 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "rgba(30,143,235,0.5)",
     },
     //rule that makes background halfway and then goes up to max once mouse is over
+    "&:hover": {
+      "&:after": {
+        top: "0%",
+      },
+    },
+  },
+  linkChanged: {
+    color: "white",
+    textDecoration: "none",
+    position: "relative",
+    transition: "all 650ms ease-in-out",
+    "&::after": {
+      content: "''",
+      position: "absolute",
+      zIndex: "1",
+      top: "60%",
+      left: "-0.1em",
+      right: "-0.1em",
+      bottom: "0",
+      transition: "top 200ms cubic-bezier(0, 0.8, 0.13, 1)",
+      backgroundColor: "rgba(40,153,245,0.5)",
+    },
     "&:hover": {
       "&:after": {
         top: "0%",
@@ -119,10 +141,12 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: "center",
+    margin: "6rem",
     marginBottom: "3rem",
   },
   icons: {
-    margin: "10px",
+    margin: "1rem",
+    marginBottom: "2rem",
     transform: "scale(0.9)",
     transition: "300ms cubic-bezier(0, 0.8, 0.13, 1)",
     "&:hover": {

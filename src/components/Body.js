@@ -40,6 +40,7 @@ const Body = (props) => {
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}
             href="https://google.com"
+            rel="noreferrer"
             target="_blank"
           >
             Find my resumé here
