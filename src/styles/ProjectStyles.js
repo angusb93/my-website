@@ -141,8 +141,11 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: "center",
-    margin: "6rem",
+    padding: "6rem",
     marginBottom: "3rem",
+    [sizes.down("sm")]: {
+      padding: "4rem",
+    },
   },
   icons: {
     margin: "1rem",

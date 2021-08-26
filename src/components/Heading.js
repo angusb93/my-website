@@ -8,9 +8,10 @@ const Heading = (props) => {
     <div className={classes.root}>
       <div className={classes.pageStyles}>
         <h1 className={classes.subheading}>
-          Hi, I'm Angus. An aspiring <br />
+          Hi, I'm Angus. An aspiring
+          {/* <br /> */}
           <Typewriter
-            words={["creative technologist.", "front-end web developer."]}
+            words={[" creative technologist.", " front-end web developer."]}
             loop={0}
             cursor
             cursorStyle="|"

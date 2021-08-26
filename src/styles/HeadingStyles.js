@@ -6,6 +6,7 @@ const useStyles = makeStyles({
   root: {
     margin: "0",
     height: "100vh",
+    minHeight: "100%",
     width: "100vw",
     overflow: "hidden",
     color: "#232129",
@@ -25,24 +26,22 @@ const useStyles = makeStyles({
     margin: "auto",
     paddingTop: "5rem",
     display: "flex",
-    width: "50%",
+    width: "60%",
     flexDirection: "column",
     justifyContent: "center",
     fontSize: "18px",
     color: "black",
     [sizes.down("xl")]: {
-      width: "60%",
+      width: "70%",
     },
     [sizes.down("lg")]: {
       width: "80%",
     },
     [sizes.down("md")]: {
       // width: "90%",
-      fontSize: "20px",
+      fontSize: "16px",
     },
     [sizes.down("sm")]: {
-      // width: "90%",
-      fontSize: "18px",
       paddingTop: "4rem",
     },
     [sizes.down("xs")]: {
@@ -54,7 +53,7 @@ const useStyles = makeStyles({
     padding: "2rem",
     paddingTop: "5rem",
     [sizes.down("md")]: {
-      fontSize: "4rem",
+      fontSize: "2.5rem",
     },
     [sizes.down("sm")]: {
       padding: "1rem",
@@ -67,9 +66,9 @@ const useStyles = makeStyles({
   contact: {
     width: "200px",
     height: "200px",
-    overflow: "hidden",
-    position: "absolute",
-    marginTop: "40rem",
+    // position: "absolute",
+    marginTop: "4rem",
+    marginBottom: "4rem",
     display: "inline-block",
     animation: "$loop 80s linear infinite",
     transition: "all 300ms cubic-bezier(0, 0.8, 0.13, 1)",
