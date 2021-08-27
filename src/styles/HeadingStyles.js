@@ -66,8 +66,8 @@ const useStyles = makeStyles({
   contact: {
     width: "200px",
     height: "200px",
-    // position: "absolute",
-    marginTop: "4rem",
+    position: "absolute",
+    marginTop: "40rem",
     marginBottom: "4rem",
     display: "inline-block",
     animation: "$loop 80s linear infinite",

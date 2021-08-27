@@ -43,14 +43,7 @@ const useStyles = makeStyles((theme) => ({
       margin: "0.2rem",
     },
   },
-  listStyles: {
-    // margin: "auto",
-    // marginBottom: "1rem",
-    [sizes.down("sm")]: {
-      margin: "0rem",
-      paddingLeft: "1.4rem",
-    },
-  },
+
   headingStyles: {
     textAlign: "left",
     fontSize: "25px",
@@ -111,6 +104,42 @@ const useStyles = makeStyles((theme) => ({
         // text is half white and half black changes on hover
       },
     },
+  },
+  listStyles: {
+    display: "flex",
+    flexDirection: "row",
+    fontSize: "1rem",
+    flexWrap: "wrap",
+    [sizes.down("sm")]: {
+      margin: "0rem",
+      paddingLeft: "1.4rem",
+    },
+  },
+  listItemStyles: {
+    display: "inline-block",
+    float: "bottom",
+    textAlign: "center",
+    width: "200px",
+    margin: "0.5rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  listPara: {
+    justifyContent: "center",
+    position: "",
+  },
+  images: {
+    zIndex: "3",
+    width: "100px",
+    height: "100px",
+    border: "2px solid black",
+    marginBottom: "1rem",
+    background: "white",
+    margin: "auto",
+    marginTop: "0",
+    display: "block",
+    borderRadius: "50%",
   },
 }));
 

@@ -1,5 +1,8 @@
 import React from "react";
 import useStyles from "../styles/BodyStyles";
+import macqLogo from "../images/macqLogo.png";
+import UNSWLogo from "../images/unswLogo.jpeg";
+import udemyLogo from "../images/udemyLogo.png";
 
 const Body = (props) => {
   const classes = useStyles();
@@ -28,14 +31,32 @@ const Body = (props) => {
           </b>
         </p>
         <h2 className={classes.headingStyles}>Education</h2>
-        <ul className={classes.listStyles}>
-          <li>
-            Macquarie University - Bachelor of Engineering (Mechatronic)(Hons)
-          </li>
-          <li>UNSW - Graduate Certificate in Computing</li>
-          <li>Udemy - The Web Developer Bootcamp 2021</li>
-          <li>Udemy - The Modern React Bootcamp 2021</li>
-        </ul>
+        <div className={classes.listStyles}>
+          <div className={classes.listItemStyles}>
+            <img className={classes.images} src={macqLogo} alt="" />
+            <span className={classes.listPara}>
+              Macquarie University Bachelor of Engineering (Mechatronic)(Hons)
+            </span>
+          </div>
+          <div className={classes.listItemStyles}>
+            <img className={classes.images} src={UNSWLogo} alt="" />
+            <span className={classes.listPara}>
+              UNSW Graduate Certificate in Computing{" "}
+            </span>
+          </div>
+          <div className={classes.listItemStyles}>
+            <img className={classes.images} src={udemyLogo} alt="" />
+            <span className={classes.listPara}>
+              Udemy The Web Developer Bootcamp 2021
+            </span>
+          </div>
+          <div className={classes.listItemStyles}>
+            <img className={classes.images} src={udemyLogo} alt="" />
+            <span className={classes.listPara}>
+              Udemy The Modern React Bootcamp 2021
+            </span>
+          </div>
+        </div>
         <h2 className={classes.headingStyles}>
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}
