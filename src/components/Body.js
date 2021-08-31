@@ -24,8 +24,8 @@ const Body = (props) => {
           structures, algorithms, databases and networks.
         </p>
         <p className={classes.paragraphStyles}>
-          I have also recently done some courses on modern web development
-          through Udemy.{" "}
+          I have also recently done courses on modern web development through
+          Udemy.{" "}
           <b>
             I'm looking for front-end developer or creative technologist roles.
           </b>
@@ -36,24 +36,29 @@ const Body = (props) => {
             <img className={classes.images} src={macqLogo} alt="" />
             <span className={classes.listPara}>
               Macquarie University Bachelor of Engineering (Mechatronic)(Hons)
+              <br />
+              2018
             </span>
           </div>
           <div className={classes.listItemStyles}>
             <img className={classes.images} src={UNSWLogo} alt="" />
             <span className={classes.listPara}>
-              UNSW Graduate Certificate in Computing{" "}
+              UNSW Graduate Certificate in Computing <br />
+              2020
             </span>
           </div>
           <div className={classes.listItemStyles}>
             <img className={classes.images} src={udemyLogo} alt="" />
             <span className={classes.listPara}>
-              Udemy The Web Developer Bootcamp 2021
+              Udemy The Web Developer Bootcamp <br />
+              2021
             </span>
           </div>
           <div className={classes.listItemStyles}>
             <img className={classes.images} src={udemyLogo} alt="" />
             <span className={classes.listPara}>
-              Udemy The Modern React Bootcamp 2021
+              Udemy The Modern React Bootcamp <br />
+              2021
             </span>
           </div>
         </div>

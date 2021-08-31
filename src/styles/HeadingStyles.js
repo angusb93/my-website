@@ -5,8 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   root: {
     margin: "0",
+    minHeight: "800px",
     height: "100vh",
-    minHeight: "100%",
+
     width: "100vw",
     overflow: "hidden",
     color: "#232129",
@@ -16,9 +17,11 @@ const useStyles = makeStyles({
 
     [sizes.down("lg")]: {
       backgroundSize: "1400px",
+      minHeight: "600px",
     },
     [sizes.down("md")]: {
       backgroundImage: `none`,
+      minHeight: "500px",
     },
   },
 
@@ -27,6 +30,7 @@ const useStyles = makeStyles({
     paddingTop: "5rem",
     display: "flex",
     width: "60%",
+    minHeight: "inherit",
     flexDirection: "column",
     justifyContent: "center",
     fontSize: "18px",
@@ -64,7 +68,7 @@ const useStyles = makeStyles({
       marginTop: "7rem",
     },
     [sizes.down("xxs")]: {
-      fontSize: "2rem",
+      fontSize: "1.5rem",
       marginTop: "4rem",
     },
   },
@@ -72,8 +76,8 @@ const useStyles = makeStyles({
   contact: {
     width: "200px",
     height: "200px",
-    position: "absolute",
-    marginTop: "45rem",
+    // position: "absolute",
+    marginTop: "5rem",
     marginBottom: "4rem",
     // display: "inline-block",
     animation: "$loop 80s linear infinite",
@@ -86,10 +90,10 @@ const useStyles = makeStyles({
       transition: "all 300ms  ease-in-out",
     },
     [sizes.down("xs")]: {
-      marginTop: "35rem",
+      marginTop: "2rem",
     },
     [sizes.down("xxs")]: {
-      // marginTop: "rem",
+      marginTop: "0",
     },
   },
   svg: {

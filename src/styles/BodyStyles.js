@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "16px",
     },
     [sizes.down("xxs")]: {
-      fontSize: "14px",
+      fontSize: "13px",
     },
   },
   paragraphStyles: {
@@ -51,11 +51,11 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "3px",
     marginBottom: "1rem",
     [sizes.down("sm")]: {
-      fontSize: "35px",
+      fontSize: "20px",
       margin: "0.3rem",
     },
     [sizes.down("xs")]: {
-      fontSize: "20px",
+      fontSize: "15px",
     },
   },
   link: {
@@ -109,11 +109,13 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "row",
     alignItems: "flex-start",
+    justifyContent: "center",
     fontSize: "15px",
     flexWrap: "wrap",
+    paddingBottom: "4rem",
     [sizes.down("sm")]: {
       margin: "0rem",
-      paddingLeft: "1.4rem",
+      fontSize: "12px",
     },
   },
   listItemStyles: {
@@ -137,10 +139,15 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid black",
     marginBottom: "1rem",
     background: "white",
+    // filter: "grayscale(100%)",
     margin: "auto",
     marginTop: "0",
     display: "block",
     borderRadius: "50%",
+    [sizes.down("sm")]: {
+      width: "80px",
+      height: "80px",
+    },
   },
 }));
 

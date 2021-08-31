@@ -35,6 +35,7 @@ const Heading = (props) => {
             viewBox="0 0 120 120"
             width="100%"
             length="auto"
+            fill={props.colorChange ? "white" : null}
           >
             <defs>
               <path
