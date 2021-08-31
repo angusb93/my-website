@@ -37,29 +37,35 @@ const useStyles = makeStyles({
     [sizes.down("lg")]: {
       width: "80%",
     },
-    [sizes.down("md")]: {
-      // width: "90%",
-      fontSize: "16px",
-    },
-    [sizes.down("sm")]: {
-      paddingTop: "4rem",
-    },
-    [sizes.down("xs")]: {
-      fontSize: "14px",
-    },
+    // [sizes.down("md")]: {
+    //   // width: "90%",
+    //   fontSize: "16px",
+    // },
+    // [sizes.down("sm")]: {
+    //   paddingTop: "4rem",
+    // },
+    // [sizes.down("xs")]: {
+    //   fontSize: "14px",
+    // },
   },
-  subheading: {
+  heading: {
     fontSize: "3.5rem",
-    padding: "2rem",
-    paddingTop: "5rem",
+    marginTop: "10rem",
+    height: "150px",
     [sizes.down("md")]: {
       fontSize: "2.5rem",
+      marginTop: "8rem",
     },
     [sizes.down("sm")]: {
-      padding: "1rem",
+      fontSize: "2rem",
     },
     [sizes.down("xs")]: {
+      fontSize: "1.8rem",
+      marginTop: "7rem",
+    },
+    [sizes.down("xxs")]: {
       fontSize: "2rem",
+      marginTop: "4rem",
     },
   },
 
@@ -67,14 +73,23 @@ const useStyles = makeStyles({
     width: "200px",
     height: "200px",
     position: "absolute",
-    marginTop: "40rem",
+    marginTop: "45rem",
     marginBottom: "4rem",
-    display: "inline-block",
+    // display: "inline-block",
     animation: "$loop 80s linear infinite",
-    transition: "all 300ms cubic-bezier(0, 0.8, 0.13, 1)",
+    transition: "all 300ms ease-in-out",
     textTransform: "uppercase",
     "&:hover": {
       fill: "rgb(10,123,215)",
+      stroke: "rgb(10,123,215)",
+      strokeWidth: "1px",
+      transition: "all 300ms  ease-in-out",
+    },
+    [sizes.down("xs")]: {
+      marginTop: "35rem",
+    },
+    [sizes.down("xxs")]: {
+      // marginTop: "rem",
     },
   },
   svg: {

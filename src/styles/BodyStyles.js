@@ -108,7 +108,8 @@ const useStyles = makeStyles((theme) => ({
   listStyles: {
     display: "flex",
     flexDirection: "row",
-    fontSize: "1rem",
+    alignItems: "flex-start",
+    fontSize: "15px",
     flexWrap: "wrap",
     [sizes.down("sm")]: {
       margin: "0rem",
