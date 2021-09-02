@@ -6,6 +6,7 @@ import Body from "../components/Body";
 import Projects from "../components/Projects";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../styles/IndexStyles";
+import { Helmet } from "react-helmet";
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,9 @@ class App extends Component {
         <Body colorChange={this.state.colorTrigger} />
         <Projects colorChange={this.state.colorTrigger} />
         <div className={classes.noise} />
+        <Helmet>
+          <title>ANGUS BUICK</title>
+        </Helmet>
       </main>
     );
   }

@@ -3,10 +3,10 @@ import useStyles from "../styles/BodyStyles";
 import macqLogo from "../images/macqLogo.png";
 import UNSWLogo from "../images/unswLogo.jpeg";
 import udemyLogo from "../images/udemyLogo.png";
+import resume from "../images/resume.pdf";
 
 const Body = (props) => {
   const classes = useStyles();
-
   return (
     // <div className={props.colorChange ? classes.rootChanged : classes.root}>
     <div className={classes.root}>
@@ -65,7 +65,7 @@ const Body = (props) => {
         <h2 className={classes.headingStyles}>
           <a
             className={props.colorChange ? classes.linkChanged : classes.link}
-            href="https://google.com"
+            href={resume}
             rel="noreferrer"
             target="_blank"
           >

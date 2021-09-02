@@ -23,7 +23,6 @@ const Heading = (props) => {
             delaySpeed={1000}
           />
         </h1>
-        {/* <div style={{ position: "fixed" }}> */}
         <a
           className={classes.contact}
           href="https://mail.google.com/mail/u/0/?fs=1&to=angusbuick@gmail.com&su=Hi,%20I%20Saw%20Your%20Website&tf=cm"

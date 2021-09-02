@@ -119,7 +119,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   listItemStyles: {
-    display: "inline-block",
     float: "bottom",
     textAlign: "center",
     width: "200px",
