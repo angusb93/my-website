@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "3px",
     textTransform: "uppercase",
     margin: "0.6rem",
+    marginBottom: "2rem",
     [sizes.down("sm")]: {
       fontSize: "30px",
       margin: "0.4rem",
@@ -94,10 +95,25 @@ const useStyles = makeStyles((theme) => ({
   },
 
   projectCard: {
-    // border: "2px solid white",
     padding: "1rem",
-    borderRadius: "10px",
-    marginBottom: "1rem",
+    borderRadius: "20px",
+    marginBottom: "3rem",
+    transition: "all 650ms ease-in-out",
+    boxShadow:
+      "-11px -11px 20px -6px rgb(0,0,0), 10px 10px 15px -10px rgb(255 255 255 / 50%)",
+    [sizes.down("sm")]: {
+      margin: "0.3rem",
+      padding: "0.3rem",
+    },
+  },
+  projectCardChanged: {
+    padding: "1rem",
+    borderRadius: "20px",
+    marginBottom: "3rem",
+    transition: "all 650ms ease-in-out",
+
+    boxShadow:
+      "-11px -11px 20px -6px rgb(255,255,255), 10px 10px 15px -10px rgb(20 20 20 / 50%)",
     [sizes.down("sm")]: {
       margin: "0.3rem",
       padding: "0.3rem",

@@ -1,4 +1,4 @@
-import andy from "../images/andy.png";
+import angus from "../images/angus.png";
 import sizes from "./sizes";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     width: "100vw",
     overflow: "hidden",
     color: "#232129",
-    backgroundImage: `url(${andy})`,
+    backgroundImage: `url(${angus})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
 

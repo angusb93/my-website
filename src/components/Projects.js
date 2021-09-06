@@ -13,7 +13,11 @@ export default function Projects(props) {
     <div className={classes.root}>
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>Projects</h2>
-        <div className={classes.projectCard}>
+        <div
+          className={
+            props.colorChange ? classes.projectCard : classes.projectCardChanged
+          }
+        >
           <h4 className={classes.projectCardTitles}>
             <a
               className={props.colorChange ? classes.linkChanged : classes.link}
@@ -44,7 +48,11 @@ export default function Projects(props) {
             </div>
           </p>
         </div>
-        <div className={classes.projectCard}>
+        <div
+          className={
+            props.colorChange ? classes.projectCard : classes.projectCardChanged
+          }
+        >
           <h4 className={classes.projectCardTitles}>
             <a
               className={props.colorChange ? classes.linkChanged : classes.link}
@@ -74,7 +82,11 @@ export default function Projects(props) {
             </div>
           </p>
         </div>
-        <div className={classes.projectCard}>
+        <div
+          className={
+            props.colorChange ? classes.projectCard : classes.projectCardChanged
+          }
+        >
           <h4 className={classes.projectCardTitles}>
             <a
               className={props.colorChange ? classes.linkChanged : classes.link}

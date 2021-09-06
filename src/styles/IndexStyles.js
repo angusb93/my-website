@@ -13,7 +13,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     margin: "0",
-    // height: "1px",
+    background: "#f1f1f1",
     width: "100%",
     overflow: "hidden",
     transition: "all 650ms ease-in-out",
