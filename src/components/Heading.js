@@ -55,7 +55,6 @@ const Heading = (props) => {
         </a>
       </div>
     </div>
-    // </div>
   );
 };
 

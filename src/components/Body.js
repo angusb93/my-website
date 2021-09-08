@@ -8,7 +8,6 @@ import resume from "../images/resume.pdf";
 const Body = (props) => {
   const classes = useStyles();
   return (
-    // <div className={props.colorChange ? classes.rootChanged : classes.root}>
     <div className={classes.root}>
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>About</h2>

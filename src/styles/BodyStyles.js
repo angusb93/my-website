@@ -9,7 +9,6 @@ const useStyles = makeStyles((theme) => ({
 
   pageStyles: {
     margin: "auto",
-    // paddingTop: "5rem",
     display: "flex",
     width: "40%",
     flexDirection: "column",
@@ -39,9 +38,6 @@ const useStyles = makeStyles((theme) => ({
     [sizes.down("sm")]: {
       margin: "0.5rem",
     },
-    // [sizes.down("xs")]: {
-    //   margin: "0.2rem",
-    // },
   },
 
   headingStyles: {
@@ -50,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
     letterSpacing: "3px",
     marginBottom: "1rem",
+    paddingTop: "4rem",
     [sizes.down("sm")]: {
       fontSize: "20px",
       margin: "0.5rem",
@@ -144,10 +141,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "3",
     width: "100px",
     height: "100px",
-    // border: "2px solid black",
     marginBottom: "1rem",
     background: "white",
-    // filter: "grayscale(100%)",
     margin: "auto",
     marginTop: "0",
     display: "block",

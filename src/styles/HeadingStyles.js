@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     },
     [sizes.down("md")]: {
       backgroundImage: `none`,
-      // minHeight: "00px",
     },
   },
 
@@ -44,14 +43,7 @@ const useStyles = makeStyles({
     [sizes.down("md")]: {
       width: "80%",
       margin: "auto",
-      // justifyContent: "center",
     },
-    // [sizes.down("sm")]: {
-    //   paddingTop: "4rem",
-    // },
-    // [sizes.down("xs")]: {
-    //   fontSize: "14px",
-    // },
   },
   heading: {
     fontSize: "3.5rem",
@@ -80,10 +72,8 @@ const useStyles = makeStyles({
   contact: {
     width: "200px",
     height: "200px",
-    // position: "absolute",
     marginTop: "5rem",
     marginBottom: "4rem",
-    // display: "inline-block",
     animation: "$loop 80s linear infinite",
     transition: "all 300ms ease-in-out",
     textTransform: "uppercase",
@@ -101,7 +91,6 @@ const useStyles = makeStyles({
     },
   },
   svg: {
-    //scale to half size
     [sizes.down("sm")]: {
       transform: "scale(0.9)",
     },

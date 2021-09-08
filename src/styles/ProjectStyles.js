@@ -125,7 +125,6 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "uppercase",
   },
   projectParagraph: {
-    // float: "left",
     display: "flex",
     [sizes.down("sm")]: {
       flexDirection: "column",
