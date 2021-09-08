@@ -5,46 +5,47 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles({
   root: {
     margin: "0",
-    minHeight: "800px",
+    minHeight: "1000px",
     height: "100vh",
-
     width: "100vw",
     overflow: "hidden",
-    color: "#232129",
     backgroundImage: `url(${angus})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
 
     [sizes.down("lg")]: {
       backgroundSize: "1400px",
-      minHeight: "600px",
+      minHeight: "800px",
     },
     [sizes.down("md")]: {
       backgroundImage: `none`,
-      minHeight: "500px",
+      // minHeight: "00px",
     },
   },
 
   pageStyles: {
-    margin: "auto",
+    // margin: "auto",
+    marginLeft: "20rem",
+    width: "50%",
+    // justifyContent: "center",
     paddingTop: "5rem",
     display: "flex",
-    width: "60%",
     minHeight: "inherit",
     flexDirection: "column",
-    justifyContent: "center",
+
     fontSize: "18px",
-    color: "black",
     [sizes.down("xl")]: {
-      width: "70%",
+      marginLeft: "10rem",
     },
     [sizes.down("lg")]: {
-      width: "80%",
+      width: "55%",
+      marginLeft: "8rem",
     },
-    // [sizes.down("md")]: {
-    //   // width: "90%",
-    //   fontSize: "16px",
-    // },
+    [sizes.down("md")]: {
+      width: "80%",
+      margin: "auto",
+      // justifyContent: "center",
+    },
     // [sizes.down("sm")]: {
     //   paddingTop: "4rem",
     // },
@@ -56,6 +57,9 @@ const useStyles = makeStyles({
     fontSize: "3.5rem",
     marginTop: "10rem",
     height: "150px",
+    [sizes.down("lg")]: {
+      fontSize: "2.7rem",
+    },
     [sizes.down("md")]: {
       fontSize: "2.5rem",
       marginTop: "8rem",

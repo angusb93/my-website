@@ -40,12 +40,11 @@ const useStyles = makeStyles((theme) => ({
     margin: "0.6rem",
     marginBottom: "2rem",
     [sizes.down("sm")]: {
-      fontSize: "30px",
-      margin: "0.4rem",
+      fontSize: "20px",
+      marginBottom: "1rem",
     },
     [sizes.down("xs")]: {
-      fontSize: "22px",
-      margin: "0.2rem",
+      fontSize: "18px",
     },
   },
   link: {
@@ -102,7 +101,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow:
       "-11px -11px 20px -6px rgb(0,0,0), 10px 10px 15px -10px rgb(255 255 255 / 50%)",
     [sizes.down("sm")]: {
-      margin: "0.3rem",
+      borderRadius: "10px",
+      marginBottom: "2rem",
       padding: "0.3rem",
     },
   },
@@ -120,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   projectCardTitles: {
-    margin: "0",
+    margin: "0.5rem",
     letterSpacing: "3px",
     textTransform: "uppercase",
   },
@@ -160,7 +160,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "6rem",
     marginBottom: "3rem",
     [sizes.down("sm")]: {
-      padding: "4rem",
+      padding: "2rem",
     },
   },
   icons: {

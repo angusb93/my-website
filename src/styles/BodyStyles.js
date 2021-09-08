@@ -39,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
     [sizes.down("sm")]: {
       margin: "0.5rem",
     },
-    [sizes.down("xs")]: {
-      margin: "0.2rem",
-    },
+    // [sizes.down("xs")]: {
+    //   margin: "0.2rem",
+    // },
   },
 
   headingStyles: {
@@ -52,17 +52,22 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
     [sizes.down("sm")]: {
       fontSize: "20px",
-      margin: "0.3rem",
+      margin: "0.5rem",
     },
     [sizes.down("xs")]: {
-      fontSize: "15px",
+      fontSize: "18px",
     },
   },
   link: {
     color: "black",
+
     textDecoration: "none",
     position: "relative",
     transition: "all 650ms ease-in-out",
+    [sizes.down("sm")]: {
+      fontSize: "14px",
+      margin: "0.5rem",
+    },
     "&::after": {
       content: "''",
       position: "absolute",
@@ -86,6 +91,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     position: "relative",
     transition: "all 650ms ease-in-out",
+    [sizes.down("sm")]: {
+      fontSize: "14px",
+      margin: "0.5rem",
+    },
     "&::after": {
       content: "''",
       position: "absolute",
@@ -135,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: "3",
     width: "100px",
     height: "100px",
-    border: "2px solid black",
+    // border: "2px solid black",
     marginBottom: "1rem",
     background: "white",
     // filter: "grayscale(100%)",

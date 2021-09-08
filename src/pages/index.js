@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "@fontsource/roboto-mono";
+import angus from "../images/angus.png";
 
 import Heading from "../components/Heading";
 import Body from "../components/Body";
@@ -51,6 +52,9 @@ class App extends Component {
         <div className={classes.noise} />
         <Helmet>
           <title>ANGUS BUICK</title>
+          <meta property="og:url" content="http://www.angusbuick.com" />
+          <meta property="og:title" content="Angus Buick's website" />
+          <meta property="og:image" content={angus} />
         </Helmet>
       </main>
     );
