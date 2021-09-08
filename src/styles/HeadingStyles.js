@@ -23,10 +23,8 @@ const useStyles = makeStyles({
   },
 
   pageStyles: {
-    // margin: "auto",
     marginLeft: "20rem",
     width: "50%",
-    // justifyContent: "center",
     paddingTop: "5rem",
     display: "flex",
     minHeight: "inherit",
@@ -35,9 +33,10 @@ const useStyles = makeStyles({
     fontSize: "18px",
     [sizes.down("xl")]: {
       marginLeft: "10rem",
+      width: "65%",
     },
     [sizes.down("lg")]: {
-      width: "55%",
+      // width: "55%",
       marginLeft: "8rem",
     },
     [sizes.down("md")]: {

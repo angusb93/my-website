@@ -19,12 +19,12 @@ const Body = (props) => {
         <p className={classes.paragraphStyles}>
           I studied mechatronic engineering for my undergraduate at Macquarie
           where I learnt about mathematics, electronics, control systems and
-          robotics. I then studied computing at UNSW where I learnt about data
-          structures, algorithms, databases and networks.
+          robotics. I then went on to study computing at UNSW where I learnt
+          about data structures, algorithms, databases and networks.
         </p>
         <p className={classes.paragraphStyles}>
-          I have also recently done courses on modern web development through
-          Udemy.{" "}
+          I have also recently completed courses on modern web development
+          through Udemy.{" "}
           <b>
             I'm looking for front-end developer or creative technologist roles.
           </b>
