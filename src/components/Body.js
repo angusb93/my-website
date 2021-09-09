@@ -12,9 +12,15 @@ const Body = (props) => {
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>About</h2>
         <p className={classes.paragraphStyles}>
-          I'm Angus. I'm a software engineer with a diverse technical
-          background. I have been working as a technician, fixing and installing
-          anything from CNC routers to servers and everything in between.
+          I'm a software engineer with a diverse technical background. I have
+          recently completed courses on modern web development through Udemy.
+        </p>
+        <p className={classes.paragraphStyles}>
+          I have been working as a technician, fixing and installing anything
+          from CNC routers to servers and everything in between.{" "}
+          <b>
+            I'm looking for front-end developer or creative technologist roles.
+          </b>
         </p>
         <p className={classes.paragraphStyles}>
           I studied mechatronic engineering for my undergraduate at Macquarie
@@ -22,13 +28,7 @@ const Body = (props) => {
           robotics. I then went on to study computing at UNSW where I learnt
           about data structures, algorithms, databases and networks.
         </p>
-        <p className={classes.paragraphStyles}>
-          I have also recently completed courses on modern web development
-          through Udemy.{" "}
-          <b>
-            I'm looking for front-end developer or creative technologist roles.
-          </b>
-        </p>
+
         <h2 className={classes.headingStyles}>Education</h2>
         <div className={classes.listStyles}>
           <div className={classes.listItemStyles}>

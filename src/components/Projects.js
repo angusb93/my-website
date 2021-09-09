@@ -5,7 +5,6 @@ import yelpCamp from "../images/yelpCamp.png";
 import thesisImage from "../images/thesisImage.png";
 import useStyles from "../styles/ProjectStyles";
 import thesis from "../images/thesis.pdf";
-import { SocialIcon } from "react-social-icons";
 
 export default function Projects(props) {
   const classes = useStyles();
@@ -13,6 +12,34 @@ export default function Projects(props) {
     <div className={classes.root}>
       <section className={classes.pageStyles}>
         <h2 className={classes.headingStyles}>Projects</h2>
+        <div
+          className={
+            props.colorChange ? classes.projectCard : classes.projectCardChanged
+          }
+        >
+          <h4 className={classes.projectCardTitles}>
+            <a
+              className={props.colorChange ? classes.linkChanged : classes.link}
+              href={thesis}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Thesis
+            </a>
+          </h4>
+
+          <p className={classes.projectParagraph}>
+            <a href={thesis} target="_blank" rel="noreferrer">
+              <img className={classes.images} src={thesisImage} alt="" />
+            </a>
+            <div className={classes.projectText}>
+              The thesis I completed for my engineering honors year was titled
+              "Autonomous Automotive Wind Tunnel Model". I explored different
+              control systems and methodolgies for keeping a minature model
+              "driving" by itself on a moving ground within a wind tunnel.
+            </div>
+          </p>
+        </div>
         <div
           className={
             props.colorChange ? classes.projectCard : classes.projectCardChanged
@@ -82,52 +109,6 @@ export default function Projects(props) {
             </div>
           </p>
         </div>
-        <div
-          className={
-            props.colorChange ? classes.projectCard : classes.projectCardChanged
-          }
-        >
-          <h4 className={classes.projectCardTitles}>
-            <a
-              className={props.colorChange ? classes.linkChanged : classes.link}
-              href={thesis}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Thesis
-            </a>
-          </h4>
-
-          <p className={classes.projectParagraph}>
-            <a href={thesis} target="_blank" rel="noreferrer">
-              <img className={classes.images} src={thesisImage} alt="" />
-            </a>
-            <div className={classes.projectText}>
-              The thesis I completed for my engineering honors year was titled
-              "Autonomous Automotive Wind Tunnel Model". I explored different
-              control systems and methodolgies for keeping a minature model
-              "driving" by itself on a moving ground within a wind tunnel.
-            </div>
-          </p>
-        </div>
-        <footer className={classes.footer}>
-          <SocialIcon
-            url="https://www.linkedin.com/in/angusbuick/"
-            bgColor="white"
-            className={classes.icons}
-            target="_blank"
-            rel="noreferrer"
-          />
-          <SocialIcon
-            url="https://github.com/angusb93"
-            bgColor="white"
-            className={classes.icons}
-            target="_blank"
-            rel="noreferrer"
-          />
-          <br />
-          Angus Buick © 2021
-        </footer>
       </section>
     </div>
   );

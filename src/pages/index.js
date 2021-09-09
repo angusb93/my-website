@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import "@fontsource/roboto-mono";
-import angus from "../images/angus.png";
 
 import Heading from "../components/Heading";
 import Body from "../components/Body";
 import Projects from "../components/Projects";
+import Footer from "../components/Footer";
+
+import angus from "../images/angus.png";
+import "@fontsource/roboto-mono";
 import { withStyles } from "@material-ui/core/styles";
 import styles from "../styles/IndexStyles";
 import { Helmet } from "react-helmet";
@@ -49,6 +51,7 @@ class App extends Component {
         <Heading colorChange={this.state.colorTrigger} />
         <Body colorChange={this.state.colorTrigger} />
         <Projects colorChange={this.state.colorTrigger} />
+        <Footer />
         <div className={classes.noise} />
         <Helmet>
           <title>ANGUS BUICK</title>
