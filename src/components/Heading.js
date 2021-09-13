@@ -12,8 +12,9 @@ const Heading = (props) => {
           <Typewriter
             words={[
               " creative technologist.",
-              " front-end web developer.",
+              " front-end developer.",
               " time traveller.",
+              " creative developer.",
             ]}
             loop={0}
             cursor
