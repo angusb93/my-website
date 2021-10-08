@@ -3,6 +3,7 @@ import React from "react";
 import reactColors from "../images/reactColors.png";
 import yelpCamp from "../images/yelpCamp.png";
 import thesisImage from "../images/thesisImage.png";
+import starWarsImage from "../images/starWars.png";
 import useStyles from "../styles/ProjectStyles";
 import thesis from "../images/thesis.pdf";
 
@@ -106,6 +107,40 @@ export default function Projects(props) {
               and Bootsrap 4 styling. This project was completed through the
               popular "Web Developer Bootcamp 2021" course on Udemy, taught by
               Colt Steele.
+            </div>
+          </p>
+        </div>
+        <div
+          className={
+            props.colorChange ? classes.projectCard : classes.projectCardChanged
+          }
+        >
+          <h4 className={classes.projectCardTitles}>
+            <a
+              className={props.colorChange ? classes.linkChanged : classes.link}
+              href="https://angus-yelpcamp.herokuapp.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Star Wars API
+            </a>
+          </h4>
+
+          <p className={classes.projectParagraph}>
+            <a
+              href="https://star-wars-website.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img className={classes.images} src={starWarsImage} alt="" />
+            </a>
+            <div className={classes.projectText}>
+              A project I completed for a coding challenge. It consumes the Star
+              Wars API and displays the information in a clean and organized
+              manner. It was built with NextJS and Sass for styling. It was
+              deployed to Vercel. It is extrememly quick! This is because the
+              API call (very slow) is performed once on the server side at build
+              time and updated on a time interval.
             </div>
           </p>
         </div>
