@@ -118,7 +118,7 @@ export default function Projects(props) {
           <h4 className={classes.projectCardTitles}>
             <a
               className={props.colorChange ? classes.linkChanged : classes.link}
-              href="https://angus-yelpcamp.herokuapp.com/"
+              href="https://star-wars-website.vercel.app/"
               target="_blank"
               rel="noreferrer"
             >
