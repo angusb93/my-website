@@ -9,7 +9,7 @@ import { a, useSpring } from "@react-spring/three";
 const HeadModel = () => {
   const { scene } = useGLTF("/models/maHead.glb"); // Ensure correct path
   const headRef = useRef<THREE.Group>(null);
-  const { scene: threeScene, mouse } = useThree();
+  const { scene: threeScene, pointer } = useThree();
   const texture = useLoader(THREE.TextureLoader, "/world.png");
 
   // Apply environment texture for reflections
@@ -65,8 +65,8 @@ const HeadModel = () => {
   useFrame(() => {
     if (animationComplete && headRef.current) {
       // Calculate the desired target rotation based on the base rotation plus a small offset from the mouse.
-      const targetX = baseRotation[0] + mouse.y * -0.3;
-      const targetY = baseRotation[1] + mouse.x * 0.3;
+      const targetX = baseRotation[0] + pointer.y * -0.3;
+      const targetY = baseRotation[1] + pointer.x * 0.3;
       // Lerp from the current rotation to the target rotation for a smooth transition.
       headRef.current.rotation.x = THREE.MathUtils.lerp(
         headRef.current.rotation.x,
