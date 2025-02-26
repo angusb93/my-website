@@ -12,7 +12,7 @@ export default function Home() {
 
         {/* Overlay content (in front) */}
         <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
-          <div className="flex w-3/4 justify-between font-bold text-8xl text-white">
+          <div className="flex w-3/4 justify-between font-bold text-6xl text-white">
             <div>ANGUS</div>
             <div>BUICK</div>
           </div>
