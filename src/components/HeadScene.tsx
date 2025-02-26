@@ -28,24 +28,24 @@ const HeadModel = () => {
         child instanceof THREE.Mesh &&
         child.material instanceof THREE.MeshStandardMaterial
       ) {
-        child.material.roughness = 0.3;
+        child.material.roughness = 0.2;
       }
     });
   }, [scene]);
 
-  // State to track animation progress
+  // State to track when the initial animation is complete
   const [animationComplete, setAnimationComplete] = useState(false);
+  // We'll store the final (base) rotation here to which we add the mouse offset
   const [baseRotation, setBaseRotation] = useState([0, 0, 0]);
 
-  // Trigger the spring animation after a 1-second delay.
-  // Using an extra state variable "animate" to force the spring to run.
+  // Use an extra state variable "animate" to trigger the spring after a delay
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(true), 2000);
+    const timeout = setTimeout(() => setAnimate(true), 1000);
     return () => clearTimeout(timeout);
   }, []);
 
-  // Spring animation using "from" and "to".
+  // Spring animation for initial movement & rotation.
   const { pos, rot } = useSpring({
     from: { pos: [0, -1, 3], rot: [0, Math.PI, 0] },
     to: animate
@@ -53,19 +53,31 @@ const HeadModel = () => {
       : { pos: [0, -1, 3], rot: [0, Math.PI, 0] },
     config: { mass: 1, tension: 180, friction: 60 },
     onRest: () => {
-      // Only set animationComplete when the intended animation has run.
       if (animate) {
         setAnimationComplete(true);
+        // Save the final rotation as the base rotation for mouse-following.
         setBaseRotation([0, Math.PI * 3, 0]);
       }
     },
   });
 
-  // Once animation is complete, update the head's rotation based on mouse movement.
+  // Once animation is complete, use a lerp to smoothly transition to the new rotation based on mouse position.
   useFrame(() => {
     if (animationComplete && headRef.current) {
-      headRef.current.rotation.x = baseRotation[0] + mouse.y * -0.3;
-      headRef.current.rotation.y = baseRotation[1] + mouse.x * 0.3;
+      // Calculate the desired target rotation based on the base rotation plus a small offset from the mouse.
+      const targetX = baseRotation[0] + mouse.y * -0.3;
+      const targetY = baseRotation[1] + mouse.x * 0.1;
+      // Lerp from the current rotation to the target rotation for a smooth transition.
+      headRef.current.rotation.x = THREE.MathUtils.lerp(
+        headRef.current.rotation.x,
+        targetX,
+        0.1
+      );
+      headRef.current.rotation.y = THREE.MathUtils.lerp(
+        headRef.current.rotation.y,
+        targetY,
+        0.1
+      );
       headRef.current.rotation.z = baseRotation[2];
     }
   });
@@ -76,7 +88,7 @@ const HeadModel = () => {
       object={scene}
       scale={1}
       position={pos}
-      // Use spring-controlled rotation only until animationComplete is true.
+      // While the initial animation is active, use the spring's rotation.
       rotation={animationComplete ? undefined : rot}
     />
   );
