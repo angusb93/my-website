@@ -66,7 +66,7 @@ const HeadModel = () => {
     if (animationComplete && headRef.current) {
       // Calculate the desired target rotation based on the base rotation plus a small offset from the mouse.
       const targetX = baseRotation[0] + mouse.y * -0.3;
-      const targetY = baseRotation[1] + mouse.x * 0.1;
+      const targetY = baseRotation[1] + mouse.x * 0.3;
       // Lerp from the current rotation to the target rotation for a smooth transition.
       headRef.current.rotation.x = THREE.MathUtils.lerp(
         headRef.current.rotation.x,
