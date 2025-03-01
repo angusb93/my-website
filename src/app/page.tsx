@@ -40,9 +40,9 @@ export default function Home() {
       {/* Scrollable content below */}
       <div>
         <div className="h-screen w-screen flex items-center justify-center">
-          <div className="flex w-3/4 justify-between font-bold text-6xl text-white">
-            <div>ANGUS</div>
-            <div>BUICK</div>
+          <div className="flex w-3/4 justify-between font-thin text-6xl text-white">
+            <div>Angus</div>
+            <div>Buick</div>
           </div>
         </div>
         <div className="relative ">
