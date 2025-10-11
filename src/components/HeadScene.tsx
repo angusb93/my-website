@@ -6,21 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { a, useSpring } from "@react-spring/three";
 
-interface HeadModelProps {
-  headRoughness: number;
-  headMetalness: number;
-  headAnimationDelay: number;
-  headMouseFollowCoefficientX: number;
-  headMouseFollowCoefficientY: number;
-}
-
-const HeadModel = ({
-  headRoughness,
-  headMetalness,
-  headAnimationDelay,
-  headMouseFollowCoefficientX,
-  headMouseFollowCoefficientY,
-}: HeadModelProps) => {
+const HeadModel = () => {
   const { scene } = useGLTF("/models/maHead.glb"); // Ensure correct path
   const headRef = useRef<THREE.Group>(null);
   const { scene: threeScene, pointer } = useThree();
@@ -42,8 +28,7 @@ const HeadModel = ({
         child instanceof THREE.Mesh &&
         child.material instanceof THREE.MeshStandardMaterial
       ) {
-        child.material.roughness = headRoughness;
-        child.material.metalness = headMetalness;
+        child.material.roughness = 0.25;
       }
     });
   }, [scene]);
@@ -56,7 +41,7 @@ const HeadModel = ({
   // Use an extra state variable "animate" to trigger the spring after a delay
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(true), headAnimationDelay);
+    const timeout = setTimeout(() => setAnimate(true), 1000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -80,19 +65,18 @@ const HeadModel = ({
   useFrame(() => {
     if (animationComplete && headRef.current) {
       // Calculate the desired target rotation based on the base rotation plus a small offset from the mouse.
-      const targetX =
-        baseRotation[0] + pointer.y * -headMouseFollowCoefficientY;
-      const targetY = baseRotation[1] + pointer.x * headMouseFollowCoefficientX;
+      const targetX = baseRotation[0] + pointer.y * -0.3;
+      const targetY = baseRotation[1] + pointer.x * 0.3;
       // Lerp from the current rotation to the target rotation for a smooth transition.
       headRef.current.rotation.x = THREE.MathUtils.lerp(
         headRef.current.rotation.x,
         targetX,
-        0.1
+        0.1,
       );
       headRef.current.rotation.y = THREE.MathUtils.lerp(
         headRef.current.rotation.y,
         targetY,
-        0.1
+        0.1,
       );
       headRef.current.rotation.z = baseRotation[2];
     }
