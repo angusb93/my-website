@@ -1,14 +1,14 @@
 "use client";
 
 import { Canvas, useLoader, useThree, useFrame } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { a, useSpring } from "@react-spring/three";
 import { Model } from "./Model";
 
-const HeadModel = () => {
+const HeadModel = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: number }> }) => {
   const headRef = useRef<THREE.Group>(null);
-  const { scene: threeScene, pointer } = useThree();
+  const { scene: threeScene } = useThree();
   const texture = useLoader(THREE.TextureLoader, "/world.png");
 
   useEffect(() => {
@@ -57,8 +57,8 @@ const HeadModel = () => {
 
   useFrame(() => {
     if (animationComplete && headRef.current) {
-      const targetX = baseRotation[0] + pointer.y * -0.3;
-      const targetY = baseRotation[1] + pointer.x * 0.3;
+      const targetX = baseRotation[0] + (mouseRef.current?.y ?? 0) * -0.3;
+      const targetY = baseRotation[1] + (mouseRef.current?.x ?? 0) * 0.3;
       headRef.current.rotation.x = THREE.MathUtils.lerp(
         headRef.current.rotation.x,
         targetX,
@@ -85,12 +85,12 @@ const HeadModel = () => {
   );
 };
 
-const App = () => {
+const App = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: number }> }) => {
   return (
     <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[3, 5, 3]} intensity={1} />
-      <HeadModel />
+      <HeadModel mouseRef={mouseRef} />
     </Canvas>
   );
 };
