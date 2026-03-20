@@ -1,12 +1,36 @@
 "use client";
 
-import { Canvas, useLoader, useThree, useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
+import { useSpring } from "@react-spring/three";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
+import type React from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { a, useSpring } from "@react-spring/three";
 import { Model } from "./Model";
 
-const HeadModel = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: number }> }) => {
+const HEAD_MATERIAL_ROUGHNESS = 0.25;
+const ANIMATION_START_DELAY_MS = 1000;
+const MOUSE_ROTATION_FACTOR = 0.3;
+const ROTATION_LERP_SPEED = 0.1;
+const SPRING_FROM_POSITION: [number, number, number] = [0, -1, 3];
+const SPRING_FROM_ROTATION: [number, number, number] = [0, Math.PI, 0];
+const SPRING_TO_POSITION: [number, number, number] = [0, 0, -2];
+const SPRING_TO_ROTATION: [number, number, number] = [0, Math.PI * 3, 0];
+const CAMERA_POSITION: [number, number, number] = [0, 0, 5];
+const CAMERA_FOV = 50;
+const AMBIENT_LIGHT_INTENSITY = 0.5;
+const DIRECTIONAL_LIGHT_INTENSITY = 1;
+const DIRECTIONAL_LIGHT_POSITION: [number, number, number] = [3, 5, 3];
+const SPRING_CONFIG = { mass: 1, tension: 180, friction: 60 };
+
+/**
+ * Inner 3D head model with mouse-tracking rotation and entrance spring animation.
+ * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
+ */
+function HeadModel({
+  mouseRef,
+}: {
+  mouseRef: React.RefObject<{ x: number; y: number }>;
+}) {
   const headRef = useRef<THREE.Group>(null);
   const { scene: threeScene } = useThree();
   const texture = useLoader(THREE.TextureLoader, "/world.png");
@@ -26,7 +50,7 @@ const HeadModel = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: num
           child instanceof THREE.Mesh &&
           child.material instanceof THREE.MeshStandardMaterial
         ) {
-          child.material.roughness = 0.25;
+          child.material.roughness = HEAD_MATERIAL_ROUGHNESS;
         }
       });
     }
@@ -37,16 +61,19 @@ const HeadModel = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: num
 
   const [animate, setAnimate] = useState(false);
   useEffect(() => {
-    const timeout = setTimeout(() => setAnimate(true), 1000);
+    const timeout = setTimeout(
+      () => setAnimate(true),
+      ANIMATION_START_DELAY_MS,
+    );
     return () => clearTimeout(timeout);
   }, []);
 
   const { pos, rot } = useSpring({
-    from: { pos: [0, -1, 3], rot: [0, Math.PI, 0] },
+    from: { pos: SPRING_FROM_POSITION, rot: SPRING_FROM_ROTATION },
     to: animate
-      ? { pos: [0, 0, -2], rot: [0, Math.PI * 3, 0] }
-      : { pos: [0, -1, 3], rot: [0, Math.PI, 0] },
-    config: { mass: 1, tension: 180, friction: 60 },
+      ? { pos: SPRING_TO_POSITION, rot: SPRING_TO_ROTATION }
+      : { pos: SPRING_FROM_POSITION, rot: SPRING_FROM_ROTATION },
+    config: SPRING_CONFIG,
     onRest: () => {
       if (animate) {
         setAnimationComplete(true);
@@ -56,43 +83,61 @@ const HeadModel = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: num
   });
 
   useFrame(() => {
-    if (animationComplete && headRef.current) {
-      const targetX = baseRotation[0] + (mouseRef.current?.y ?? 0) * -0.3;
-      const targetY = baseRotation[1] + (mouseRef.current?.x ?? 0) * 0.3;
+    if (!headRef.current) {
+      return;
+    }
+
+    const [px, py, pz] = pos.get();
+    headRef.current.position.set(px, py, pz);
+
+    if (animationComplete) {
+      const targetX =
+        baseRotation[0] + (mouseRef.current?.y ?? 0) * -MOUSE_ROTATION_FACTOR;
+      const targetY =
+        baseRotation[1] + (mouseRef.current?.x ?? 0) * MOUSE_ROTATION_FACTOR;
       headRef.current.rotation.x = THREE.MathUtils.lerp(
         headRef.current.rotation.x,
         targetX,
-        0.1,
+        ROTATION_LERP_SPEED,
       );
       headRef.current.rotation.y = THREE.MathUtils.lerp(
         headRef.current.rotation.y,
         targetY,
-        0.1,
+        ROTATION_LERP_SPEED,
       );
       headRef.current.rotation.z = baseRotation[2];
+    } else {
+      const [rx, ry, rz] = rot.get();
+      headRef.current.rotation.set(rx, ry, rz);
     }
   });
 
   return (
-    <a.group
-      ref={headRef}
-      scale={1}
-      position={pos as any}
-      rotation={animationComplete ? undefined : (rot as any)}
-    >
+    <group ref={headRef} scale={1}>
       <Model />
-    </a.group>
+    </group>
   );
-};
+}
 
-const App = ({ mouseRef }: { mouseRef: React.RefObject<{ x: number; y: number }> }) => {
+/**
+ * Full-screen R3F canvas containing the animated 3D head scene.
+ * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
+ */
+function HeadScene({
+  mouseRef,
+}: {
+  mouseRef: React.RefObject<{ x: number; y: number }>;
+}) {
   return (
-    <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[3, 5, 3]} intensity={1} />
+    <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
+      <ambientLight intensity={AMBIENT_LIGHT_INTENSITY} />
+      <directionalLight
+        position={DIRECTIONAL_LIGHT_POSITION}
+        intensity={DIRECTIONAL_LIGHT_INTENSITY}
+      />
       <HeadModel mouseRef={mouseRef} />
     </Canvas>
   );
-};
+}
 
-export default App;
+export default HeadScene;

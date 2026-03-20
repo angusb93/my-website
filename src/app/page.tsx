@@ -3,6 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import HeadScene from "@/components/HeadScene";
 
+const BLUR_SCROLL_DIVISOR = 100;
+const MAX_BLUR_PX = 5;
+const DARKNESS_SCROLL_DIVISOR = 200;
+const MAX_DARKNESS_OPACITY = 0.7;
+
 export default function Home() {
   const [blur, setBlur] = useState(0);
   const [darkness, setDarkness] = useState(0);
@@ -14,8 +19,10 @@ export default function Home() {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
-          setBlur(Math.min(scrollY / 100, 5));
-          setDarkness(Math.min(scrollY / 200, 0.7));
+          setBlur(Math.min(scrollY / BLUR_SCROLL_DIVISOR, MAX_BLUR_PX));
+          setDarkness(
+            Math.min(scrollY / DARKNESS_SCROLL_DIVISOR, MAX_DARKNESS_OPACITY),
+          );
           ticking = false;
         });
         ticking = true;
@@ -80,7 +87,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -88,7 +95,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -96,7 +103,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -104,7 +111,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -112,7 +119,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -120,7 +127,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -128,7 +135,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -136,7 +143,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
@@ -144,7 +151,7 @@ export default function Home() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
               nec odio. Praesent libero. Sed cursus ante dapibus diam.
             </p>
-          </section>{" "}
+          </section>
           <section className="p-8 text-white">
             <h2 className="text-2xl mb-4">My Next.js Site</h2>
             <p>More content goes here...</p>
