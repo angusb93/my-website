@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check src",
-    "format": "biome format --write src"
+    "format": "biome format --write src",
+    "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
     "@react-spring/three": "10.0.3",
@@ -27,6 +28,7 @@
     "@types/node": "25.5.0",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@typescript/native-preview": "7.0.0-dev.20260320.1",
     "postcss": "8.5.8",
     "tailwindcss": "4.2.2",
     "typescript": "5.7.3"
