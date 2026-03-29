@@ -14,6 +14,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI || '',
   }),
   secret: process.env.PAYLOAD_SECRET || '',
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
   typescript: {
     outputFile: './src/payload-types.ts',
   },

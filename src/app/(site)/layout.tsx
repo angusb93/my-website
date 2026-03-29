@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
 
 const roboto = Roboto({
   weight: ["100", "300", "400", "500", "700"],
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "My personal website",
 };
 
-export default function RootLayout({
+export default function SiteLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

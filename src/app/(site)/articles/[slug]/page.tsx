@@ -3,25 +3,39 @@ export const dynamic = 'force-dynamic'
 import { getPayload } from 'payload'
 import { notFound } from 'next/navigation'
 import config from '@payload-config'
+import { RichText } from '@payloadcms/richtext-lexical/react'
 
 type Args = {
   params: Promise<{ slug: string }>
 }
 
+/** Normalise a slug value so leading slashes don't cause mismatches. */
+function normaliseSlug(slug: string) {
+  return slug.replace(/^\/+/, '')
+}
+
+async function findArticle(slug: string) {
+  const payload = await getPayload({ config })
+  // Try the bare slug first, then with a leading slash (handles legacy data).
+  for (const candidate of [slug, `/${slug}`]) {
+    const { docs } = await payload.find({
+      collection: 'articles',
+      where: { slug: { equals: candidate } },
+      limit: 1,
+    })
+    if (docs[0]) {
+      return docs[0]
+    }
+  }
+  return null
+}
+
 export async function generateMetadata({ params }: Args) {
   const { slug } = await params
-  const payload = await getPayload({ config })
-  const { docs } = await payload.find({
-    collection: 'articles',
-    where: { slug: { equals: slug } },
-    limit: 1,
-  })
-
-  const article = docs[0]
+  const article = await findArticle(normaliseSlug(slug))
   if (!article) {
     return {}
   }
-
   return {
     title: article.title,
     description: article.excerpt ?? undefined,
@@ -30,14 +44,7 @@ export async function generateMetadata({ params }: Args) {
 
 export default async function ArticlePage({ params }: Args) {
   const { slug } = await params
-  const payload = await getPayload({ config })
-  const { docs } = await payload.find({
-    collection: 'articles',
-    where: { slug: { equals: slug } },
-    limit: 1,
-  })
-
-  const article = docs[0]
+  const article = await findArticle(normaliseSlug(slug))
   if (!article) {
     notFound()
   }
@@ -57,10 +64,11 @@ export default async function ArticlePage({ params }: Args) {
       {article.excerpt && (
         <p className="mb-8 text-lg text-white/60">{article.excerpt}</p>
       )}
-      <div className="prose prose-invert max-w-none">
-        {/* Rich text rendered as JSON for now — add RichText renderer when needed */}
-        <pre className="text-sm text-white/60">{JSON.stringify(article.content, null, 2)}</pre>
-      </div>
+      {article.content && (
+        <div className="prose prose-invert max-w-none text-white/80">
+          <RichText data={article.content} />
+        </div>
+      )}
     </main>
   )
 }
