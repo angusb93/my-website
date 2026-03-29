@@ -11,7 +11,7 @@ export default buildConfig({
   collections: [Articles, Users],
   editor: lexicalEditor(),
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: process.env.MONGODB_URI || '',
   }),
   secret: process.env.PAYLOAD_SECRET || '',
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
