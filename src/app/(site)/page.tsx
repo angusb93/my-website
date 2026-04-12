@@ -1,7 +1,7 @@
-import { getPayload } from "payload";
 import config from "@payload-config";
-import HomeBackground from "@/components/HomeBackground";
 import Link from "next/link";
+import { getPayload } from "payload";
+import HomeBackground from "@/components/HomeBackground";
 
 export const dynamic = "force-dynamic";
 
@@ -28,7 +28,10 @@ export default async function Home() {
         </div>
         <div className="relative p-8">
           {article && (
-            <Link href={`/articles/${article.slug.replace(/^\/+/, '')}`} className="group block max-w-sm rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10">
+            <Link
+              href={`/articles/${article.slug.replace(/^\/+/, "")}`}
+              className="group block max-w-sm rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition hover:border-white/30 hover:bg-white/10"
+            >
               <p className="mb-3 text-xs font-medium uppercase tracking-widest text-white/40">
                 Latest
               </p>

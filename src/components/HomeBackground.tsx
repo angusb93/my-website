@@ -24,7 +24,9 @@ export default function HomeBackground() {
         window.requestAnimationFrame(() => {
           const scrollY = window.scrollY;
           setBlur(Math.min(scrollY / BLUR_SCROLL_DIVISOR, MAX_BLUR_PX));
-          setDarkness(Math.min(scrollY / DARKNESS_SCROLL_DIVISOR, MAX_DARKNESS_OPACITY));
+          setDarkness(
+            Math.min(scrollY / DARKNESS_SCROLL_DIVISOR, MAX_DARKNESS_OPACITY),
+          );
           ticking = false;
         });
         ticking = true;
