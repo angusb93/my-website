@@ -20,9 +20,11 @@ Next.js 15 (App Router) personal portfolio site with an interactive 3D scene as 
 
 The hero is a full-screen fixed 3D canvas layered behind scrollable content:
 
-1. `src/app/page.tsx` — client component, tracks mouse position and scroll depth, applies dynamic blur/darkness filters to `HeadScene`, renders scrollable sections on top
-2. `src/components/HeadScene.tsx` — R3F `Canvas` setup (camera, lighting, environment map from `public/world.png`), animates the head on load via `@react-spring/three`, lerps rotation toward mouse position each frame
-3. `src/components/Model.tsx` — gltfjsx-generated loader for `public/models/maHead.glb`
+1. `src/app/page.tsx` — server component, fetches latest article, renders `HomeWrapper`
+2. `src/components/HomeWrapper.tsx` — client component, owns `loaded` state, drives entrance animations
+3. `src/components/HomeBackground.tsx` — client component, tracks mouse/scroll, renders `HeadScene`
+4. `src/components/HeadScene.tsx` — R3F `Canvas` setup (camera, lighting, environment map from `public/world.jpg`), animates the head on load via `@react-spring/three`, lerps rotation toward mouse position each frame
+5. `src/components/Model.tsx` — loads `public/models/maHead.glb` via `useGLTF`, rendered with `<primitive>`
 
 ### Scroll Effects
 
@@ -31,11 +33,69 @@ The hero is a full-screen fixed 3D canvas layered behind scrollable content:
 
 ### Styling
 
-Tailwind CSS v4 via PostCSS. Global dark radial gradient background defined in `src/app/globals.css`. Use `cn()` from `src/utils/cn.ts` for conditional class merging. Please prefer cn() object notation for readability.
+Tailwind CSS v4 via PostCSS. Global dark radial gradient background defined in `src/app/globals.css`. Use `cn()` from `src/utils/cn.ts` for conditional class merging. Prefer `cn()` object notation for readability.
 
-### Code style
+## Code Style
 
-- Dont use 1 line if statements, always use curly braces
-- Define constants for any magic numbers (e.g. scroll thresholds) and use descriptive names. In caps outside of the component at the top of the file. like, `THIS_IS_A_SCROLL_THRESHOLD = 100`
-- For any top level functions or react components always use function declarations, not arrow expressions.
-- For any serious functions, add JSDoc comments describing the parameters and return value. For React components, add a description of the props and their types.
+### Types
+
+- Use `type` over `interface`
+- Prefer enums over string literal unions
+- Avoid `as` type assertions — prefer type guards, runtime validation, or narrowing. Exception: viem contract return types where generics cannot express the shape
+- Avoid non-null assertions (`!`) — use explicit checks or guard clauses so TypeScript can narrow the type naturally
+- Type blockchain addresses as `Address` from viem (`import type { Address } from "viem"`) — prefer the named type over inline `` 0x${string} `` literals
+
+### Variables and constants
+
+- Prefer `const` — avoid `let` unless unavoidable (e.g. try/catch assignments)
+- Extract magic numbers and strings into named constants at module scope — SCREAMING_SNAKE_CASE, e.g. `BLUR_SCROLL_DIVISOR = 100`
+- Use enums for related discrete values
+
+### Functions
+
+- Use function declarations (`function foo()`) for standalone/top-level functions and React components. Arrow functions are fine for inline callbacks
+- Guard clause pattern — check for invalid/error cases first, return early, then handle the happy path
+- Keep functions focused — extract long functions into smaller named helpers
+- Move pure functions to module scope — do not define them inside components where they'd be recreated each render
+- Use `useCallback` for impure/stateful functions passed as props or used in dependency arrays
+- Use `useMemo` for expensive computations — do not recompute derived data on every render
+- Construct regex and other reusable objects at module scope, not inside functions or components
+
+### Error handling
+
+- Wrap async operations (fetch, contract calls, file I/O) in try/catch — do not let errors propagate silently
+- Avoid nested try/catch — flatten into sequential operations or extract inner logic into helper functions
+- Type catch parameters as `unknown` and narrow with `instanceof` — never `catch (err: any)`
+
+### Imports and utilities
+
+- Import named exports directly (`import { useEffect } from "react"`), not via namespace (`React.useEffect`)
+- Use `URL` for URL construction instead of string templates
+- Avoid `utils/` as a top-level folder — use specific names: `services/` for data fetching, `formatters/` for formatting, `validators/` for validation, etc.
+
+### Loops and iteration
+
+- Prefer `for (const x of ...)` over `.forEach()` or index-based `for` loops
+
+### JSX
+
+- Always use curly braces for if statements — no single-line if
+- Use ternaries instead of `&&` for conditional rendering to avoid rendering `0` or `""`:
+  ```tsx
+  // Good
+  {items.length > 0 ? <List items={items} /> : null}
+  // Bad — can render 0
+  {items.length && <List items={items} />}
+  ```
+- Break large conditional renders into named sub-components (Loading, Empty, Populated) in the same file
+- Consolidate repeated UI patterns into reusable components
+- Handle singular/plural in display text: `` `${count} ${count === 1 ? "item" : "items"}` ``
+
+### File organisation
+
+- Keep component files focused — when a file exceeds ~500 lines, extract self-contained pieces into separate files in the same directory
+- Add JSDoc comments to any serious function or React component, describing parameters and return value
+
+### 3D / R3F specific
+
+- Define constants for any magic numbers at the top of the file in SCREAMING_SNAKE_CASE
