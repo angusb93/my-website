@@ -33,7 +33,7 @@ function HeadModel({
 }) {
   const headRef = useRef<THREE.Group>(null);
   const { scene: threeScene } = useThree();
-  const texture = useLoader(THREE.TextureLoader, "/world.png");
+  const texture = useLoader(THREE.TextureLoader, "/world.jpg");
 
   useEffect(() => {
     if (texture) {
