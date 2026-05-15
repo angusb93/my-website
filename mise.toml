@@ -1,0 +1,9 @@
+[tools]
+node = "24.14"
+pnpm = "11.1.2"
+
+[hooks]
+enter = "mise i"
+
+[settings]
+experimental = true

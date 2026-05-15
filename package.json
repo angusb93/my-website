@@ -10,7 +10,8 @@
     "lint:fix": "biome check --write src",
     "format": "biome format --write src",
     "typecheck": "tsgo --noEmit",
-    "generate:importmap": "bun run scripts/generate-importmap.ts"
+    "generate:types": "payload generate:types",
+    "generate:importmap": "payload generate:importmap"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.82.1",
@@ -28,6 +29,9 @@
     "react-dom": "19.2.5",
     "tailwind-merge": "3.5.0",
     "three": "0.183.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp"]
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.11",
