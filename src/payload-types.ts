@@ -128,21 +128,28 @@ export interface Article {
   publishedDate?: string | null;
   status?: ('draft' | 'published') | null;
   excerpt?: string | null;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  content?:
+    | {
+        richText: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'richText';
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -255,7 +262,17 @@ export interface ArticlesSelect<T extends boolean = true> {
   publishedDate?: T;
   status?: T;
   excerpt?: T;
-  content?: T;
+  content?:
+    | T
+    | {
+        richText?:
+          | T
+          | {
+              richText?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   updatedAt?: T;
   createdAt?: T;
 }

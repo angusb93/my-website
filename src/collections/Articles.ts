@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { RichTextBlock } from "@/blocks/RichText";
 
 export const Articles: CollectionConfig = {
   slug: "articles",
@@ -24,6 +25,10 @@ export const Articles: CollectionConfig = {
       admin: { position: "sidebar" },
     },
     { name: "excerpt", type: "textarea" },
-    { name: "content", type: "richText" },
+    {
+      name: "content",
+      type: "blocks",
+      blocks: [RichTextBlock],
+    },
   ],
 };

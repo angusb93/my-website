@@ -66,11 +66,16 @@ export default async function ArticlePage({ params }: Args) {
       {article.excerpt && (
         <p className="mb-8 text-lg text-white/60">{article.excerpt}</p>
       )}
-      {article.content && (
-        <div className="prose prose-invert max-w-none text-white/80">
-          <RichText data={article.content} />
-        </div>
-      )}
+      {article.content?.map((block) => {
+        if (block.blockType === "richText") {
+          return (
+            <div key={block.id} className="prose prose-invert max-w-none text-white/80">
+              <RichText data={block.richText} />
+            </div>
+          );
+        }
+        return null;
+      })}
     </main>
   );
 }
