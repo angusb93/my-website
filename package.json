@@ -11,7 +11,9 @@
     "format": "biome format --write src",
     "typecheck": "tsgo --noEmit",
     "generate:types": "payload generate:types",
-    "generate:importmap": "payload generate:importmap"
+    "generate:importmap": "payload generate:importmap",
+    "knip": "knip",
+    "knip:fix": "knip --fix"
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "3.82.1",
@@ -31,7 +33,10 @@
     "three": "0.183.2"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.11",
@@ -39,6 +44,7 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@typescript/native-preview": "7.0.0-dev.20260412.1",
+    "knip": "^6.13.1",
     "postcss": "8.5.9",
     "tailwindcss": "4.2.2",
     "typescript": "6.0.2"
