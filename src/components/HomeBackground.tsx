@@ -10,9 +10,13 @@ const MAX_DARKNESS_OPACITY = 0.7;
 
 /**
  * Fixed 3D background with scroll-driven blur/darkness and mouse-tracking.
- * Extracted as a client component so the parent page can be a server component.
+ * @param onLoaded - Called once the 3D scene has finished loading.
  */
-export default function HomeBackground() {
+export default function HomeBackground({
+  onLoaded,
+}: {
+  onLoaded?: () => void;
+}) {
   const [blur, setBlur] = useState(0);
   const [darkness, setDarkness] = useState(0);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -54,7 +58,7 @@ export default function HomeBackground() {
         className="fixed inset-0 w-screen h-screen"
         style={{ filter: `blur(${blur}px)`, transition: "filter 0.3s ease" }}
       >
-        <HeadScene mouseRef={mouseRef} />
+        <HeadScene mouseRef={mouseRef} onLoaded={onLoaded} />
       </div>
       <div
         className="fixed inset-0 w-screen h-screen pointer-events-none"

@@ -3,7 +3,7 @@
 import { useSpring } from "@react-spring/three";
 import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Model } from "./Model";
 
@@ -25,11 +25,14 @@ const SPRING_CONFIG = { mass: 1, tension: 180, friction: 60 };
 /**
  * Inner 3D head model with mouse-tracking rotation and entrance spring animation.
  * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
+ * @param onLoaded - Called once the model and environment map have finished loading.
  */
 function HeadModel({
   mouseRef,
+  onLoaded,
 }: {
   mouseRef: React.RefObject<{ x: number; y: number }>;
+  onLoaded?: () => void;
 }) {
   const headRef = useRef<THREE.Group>(null);
   const { scene: threeScene } = useThree();
@@ -40,8 +43,9 @@ function HeadModel({
       texture.mapping = THREE.EquirectangularReflectionMapping;
       texture.colorSpace = THREE.SRGBColorSpace;
       threeScene.environment = texture;
+      onLoaded?.();
     }
-  }, [texture, threeScene]);
+  }, [texture, threeScene, onLoaded]);
 
   useEffect(() => {
     if (headRef.current) {
@@ -122,11 +126,14 @@ function HeadModel({
 /**
  * Full-screen R3F canvas containing the animated 3D head scene.
  * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
+ * @param onLoaded - Called once the model and environment map have finished loading.
  */
 function HeadScene({
   mouseRef,
+  onLoaded,
 }: {
   mouseRef: React.RefObject<{ x: number; y: number }>;
+  onLoaded?: () => void;
 }) {
   return (
     <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
@@ -135,7 +142,9 @@ function HeadScene({
         position={DIRECTIONAL_LIGHT_POSITION}
         intensity={DIRECTIONAL_LIGHT_INTENSITY}
       />
-      <HeadModel mouseRef={mouseRef} />
+      <Suspense fallback={null}>
+        <HeadModel mouseRef={mouseRef} onLoaded={onLoaded} />
+      </Suspense>
     </Canvas>
   );
 }
