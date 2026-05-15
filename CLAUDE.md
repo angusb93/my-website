@@ -5,14 +5,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-bun dev       # Dev server with Turbopack on port 3000
-bun build     # Production build
-bun lint      # Biome linting
+pnpm dev              # Dev server with Turbopack on port 3000
+pnpm build            # Production build
+pnpm lint             # Biome linting
+pnpm generate:types      # Regenerate Payload CMS TypeScript types
+pnpm generate:importmap  # Regenerate Payload CMS admin import map
 ```
 
 ## Architecture
 
-Next.js 15 (App Router) personal portfolio site with an interactive 3D scene as the hero. Uses React Three Fiber for 3D rendering and Bun as the package manager.
+Next.js 15 (App Router) personal portfolio site with an interactive 3D scene as the hero. Uses React Three Fiber for 3D rendering and pnpm as the package manager.
 
 **Path alias:** `@/*` → `src/*`
 
