@@ -45,7 +45,6 @@ Tailwind CSS v4 via PostCSS. Global dark radial gradient background defined in `
 - Prefer enums over string literal unions
 - Avoid `as` type assertions — prefer type guards, runtime validation, or narrowing. Exception: viem contract return types where generics cannot express the shape
 - Avoid non-null assertions (`!`) — use explicit checks or guard clauses so TypeScript can narrow the type naturally
-- Type blockchain addresses as `Address` from viem (`import type { Address } from "viem"`) — prefer the named type over inline `` 0x${string} `` literals
 
 ### Variables and constants
 
