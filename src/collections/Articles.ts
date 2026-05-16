@@ -1,11 +1,16 @@
 import type { CollectionConfig } from "payload";
+import { authenticated } from "@/access/authenticated";
+import { authenticatedOrPublished } from "@/access/authenticatedOrPublished";
 import { RichTextBlock } from "@/blocks/RichText";
 
 export const Articles: CollectionConfig = {
   slug: "articles",
   admin: { useAsTitle: "title" },
   access: {
-    read: () => true,
+    create: authenticated,
+    read: authenticatedOrPublished,
+    update: authenticated,
+    delete: authenticated,
   },
   fields: [
     { name: "title", type: "text", required: true },
@@ -18,10 +23,8 @@ export const Articles: CollectionConfig = {
       hooks: {
         beforeChange: [
           ({ value }) => {
-            if (typeof value !== "string") {
-              return;
-            }
-            value.replace(/^\/+/, "");
+            const validatedValue = String(value);
+            return validatedValue.replace(/^\/+/, "");
           },
         ],
       },
