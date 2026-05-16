@@ -1,8 +1,8 @@
 import type { CollectionConfig } from "payload";
 import { RichTextBlock } from "@/blocks/RichText";
 
-export const Articles: CollectionConfig = {
-  slug: "articles",
+export const Projects: CollectionConfig = {
+  slug: "projects",
   admin: { useAsTitle: "title" },
   access: {
     read: () => true,
@@ -15,18 +15,7 @@ export const Articles: CollectionConfig = {
       required: true,
       unique: true,
       admin: { position: "sidebar" },
-      hooks: {
-        beforeChange: [
-          ({ value }) => {
-            if (typeof value !== "string") {
-              return;
-            }
-            value.replace(/^\/+/, "");
-          },
-        ],
-      },
     },
-    { name: "publishedDate", type: "date", admin: { position: "sidebar" } },
     {
       name: "status",
       type: "select",

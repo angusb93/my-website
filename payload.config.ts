@@ -2,13 +2,15 @@ import { buildConfig } from 'payload'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { Articles } from './src/collections/Articles'
+import { Pages } from './src/collections/Pages'
+import { Projects } from './src/collections/Projects'
 import { Users } from './src/collections/Users'
 
 export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Articles, Users],
+  collections: [Articles, Pages, Projects, Users],
   editor: lexicalEditor(),
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || '',

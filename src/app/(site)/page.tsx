@@ -1,5 +1,6 @@
 import config from "@payload-config";
 import { getPayload } from "payload";
+import { BlockRenderer } from "@/components/BlockRenderer";
 import { HomeWrapper } from "@/components/HomeWrapper";
 
 export const dynamic = "force-dynamic";
@@ -7,17 +8,17 @@ export const dynamic = "force-dynamic";
 export default async function Home() {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
-    collection: "articles",
-    where: { status: { equals: "published" } },
-    sort: "-publishedDate",
+    collection: "pages",
+    where: { slug: { equals: "home" } },
     limit: 1,
   });
-
-  const article = docs[0] ?? null;
+  const home = docs[0] ?? null;
 
   return (
     <main className="min-h-screen w-screen relative">
-      <HomeWrapper article={article} />
+      <HomeWrapper>
+        <BlockRenderer blocks={home?.blocks ?? []} />
+      </HomeWrapper>
     </main>
   );
 }
