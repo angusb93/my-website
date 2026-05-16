@@ -69,7 +69,10 @@ export default async function ArticlePage({ params }: Args) {
       {article.content?.map((block) => {
         if (block.blockType === "richText") {
           return (
-            <div key={block.id} className="prose prose-invert max-w-none text-white/80">
+            <div
+              key={block.id}
+              className="prose prose-invert max-w-none text-white/80"
+            >
               <RichText data={block.richText} />
             </div>
           );
