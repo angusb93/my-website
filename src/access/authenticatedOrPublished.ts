@@ -4,5 +4,5 @@ export const authenticatedOrPublished: Access = ({ req: { user } }) => {
   if (user) {
     return true;
   }
-  return { status: { equals: "published" } };
+  return { _status: { equals: "published" } };
 };

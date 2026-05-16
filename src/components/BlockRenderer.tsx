@@ -10,8 +10,9 @@ async function LatestArticleCard() {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: "articles",
-    where: { status: { equals: "published" } },
-    sort: "-publishedDate",
+    where: { _status: { equals: "published" } },
+    sort: "-publishedAt",
+    draft: false,
     limit: 1,
   });
   const article = docs[0];
@@ -45,8 +46,9 @@ async function LatestProjectCard() {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: "projects",
-    where: { status: { equals: "published" } },
-    sort: "-createdAt",
+    where: { _status: { equals: "published" } },
+    sort: "-publishedAt",
+    draft: false,
     limit: 1,
   });
   const project = docs[0];

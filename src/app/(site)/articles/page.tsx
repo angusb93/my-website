@@ -13,8 +13,9 @@ export default async function ArticlesPage() {
   const payload = await getPayload({ config });
   const { docs } = await payload.find({
     collection: "articles",
-    where: { status: { equals: "published" } },
-    sort: "-publishedDate",
+    where: { _status: { equals: "published" } },
+    sort: "-publishedAt",
+    draft: false,
   });
 
   return (
@@ -22,26 +23,28 @@ export default async function ArticlesPage() {
       <h1 className="mb-8 text-3xl font-light tracking-tight text-white">
         Articles
       </h1>
-      {docs.length === 0 && <p className="text-white/50">No articles yet.</p>}
+      {docs.length === 0 ? (
+        <p className="text-white/50">No articles yet.</p>
+      ) : null}
       <ul className="space-y-8">
         {docs.map((article) => (
           <li key={article.id}>
             <Link href={`/articles/${article.slug}`} className="group block">
-              <h2 className="text-xl font-medium text-white group-hover:text-white/80 transition-colors">
+              <h2 className="text-xl font-medium text-white transition-colors group-hover:text-white/80">
                 {article.title}
               </h2>
-              {article.publishedDate && (
+              {article.publishedAt ? (
                 <time className="mt-1 block text-sm text-white/40">
-                  {new Date(article.publishedDate).toLocaleDateString("en-AU", {
+                  {new Date(article.publishedAt).toLocaleDateString("en-AU", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </time>
-              )}
-              {article.excerpt && (
+              ) : null}
+              {article.excerpt ? (
                 <p className="mt-2 text-white/60">{article.excerpt}</p>
-              )}
+              ) : null}
             </Link>
           </li>
         ))}

@@ -14,6 +14,7 @@ async function findProject(slug: string) {
   const { docs } = await payload.find({
     collection: "projects",
     where: { slug: { equals: slug } },
+    draft: false,
     limit: 1,
   });
   return docs[0] ?? null;
@@ -26,8 +27,8 @@ export async function generateMetadata({ params }: Args) {
     return {};
   }
   return {
-    title: project.title,
-    description: project.excerpt ?? undefined,
+    title: project.meta?.title ?? project.title,
+    description: project.meta?.description ?? project.excerpt ?? undefined,
   };
 }
 

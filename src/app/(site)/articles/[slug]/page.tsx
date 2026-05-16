@@ -9,42 +9,32 @@ type Args = {
   params: Promise<{ slug: string }>;
 };
 
-/** Normalise a slug value so leading slashes don't cause mismatches. */
-function normaliseSlug(slug: string) {
-  return slug.replace(/^\/+/, "");
-}
-
 async function findArticle(slug: string) {
   const payload = await getPayload({ config });
-  // Try the bare slug first, then with a leading slash (handles legacy data).
-  for (const candidate of [slug, `/${slug}`]) {
-    const { docs } = await payload.find({
-      collection: "articles",
-      where: { slug: { equals: candidate } },
-      limit: 1,
-    });
-    if (docs[0]) {
-      return docs[0];
-    }
-  }
-  return null;
+  const { docs } = await payload.find({
+    collection: "articles",
+    where: { slug: { equals: slug } },
+    draft: false,
+    limit: 1,
+  });
+  return docs[0] ?? null;
 }
 
 export async function generateMetadata({ params }: Args) {
   const { slug } = await params;
-  const article = await findArticle(normaliseSlug(slug));
+  const article = await findArticle(slug);
   if (!article) {
     return {};
   }
   return {
-    title: article.title,
-    description: article.excerpt ?? undefined,
+    title: article.meta?.title ?? article.title,
+    description: article.meta?.description ?? article.excerpt ?? undefined,
   };
 }
 
 export default async function ArticlePage({ params }: Args) {
   const { slug } = await params;
-  const article = await findArticle(normaliseSlug(slug));
+  const article = await findArticle(slug);
   if (!article) {
     notFound();
   }
@@ -54,18 +44,18 @@ export default async function ArticlePage({ params }: Args) {
       <h1 className="mb-4 text-3xl font-light tracking-tight text-white">
         {article.title}
       </h1>
-      {article.publishedDate && (
+      {article.publishedAt ? (
         <time className="mb-8 block text-sm text-white/40">
-          {new Date(article.publishedDate).toLocaleDateString("en-AU", {
+          {new Date(article.publishedAt).toLocaleDateString("en-AU", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </time>
-      )}
-      {article.excerpt && (
+      ) : null}
+      {article.excerpt ? (
         <p className="mb-8 text-lg text-white/60">{article.excerpt}</p>
-      )}
+      ) : null}
       {article.content?.map((block) => {
         if (block.blockType === "richText") {
           return (
