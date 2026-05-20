@@ -19,7 +19,13 @@ export default function SiteLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>{children}</body>
+      <body className={`${roboto.className} antialiased`}>
+        {children}
+        <p className="fixed bottom-0 left-0 right-0 z-50 py-3 text-center text-lg text-white">
+          Site is under a large update. Watch this space for something new and
+          exciting!
+        </p>
+      </body>
     </html>
   );
 }
