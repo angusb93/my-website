@@ -2,11 +2,8 @@
 
 import { cn } from "@/utils/cn";
 
-/**
- * Full-screen spinner overlay. Instantly hidden when the reveal fires so the
- * cut to the head model is hard rather than a fade.
- * @param loaded - When true, the overlay is removed from view immediately.
- */
+const DOT_ANIMATION = "dotBounce 1.2s ease-in-out infinite";
+
 export function Loader({ loaded }: { loaded: boolean }) {
   return (
     <div
@@ -15,7 +12,20 @@ export function Loader({ loaded }: { loaded: boolean }) {
         { hidden: loaded },
       )}
     >
-      <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white/80 animate-spin" />
+      <div className="flex gap-3 items-center">
+        <div
+          className="w-4 h-4 rounded-full bg-white"
+          style={{ animation: DOT_ANIMATION }}
+        />
+        <div
+          className="w-4 h-4 rounded-full bg-white"
+          style={{ animation: DOT_ANIMATION, animationDelay: "0.2s" }}
+        />
+        <div
+          className="w-4 h-4 rounded-full bg-white"
+          style={{ animation: DOT_ANIMATION, animationDelay: "0.4s" }}
+        />
+      </div>
     </div>
   );
 }
