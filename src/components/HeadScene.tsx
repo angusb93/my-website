@@ -11,7 +11,7 @@ const HEAD_MATERIAL_ROUGHNESS = 0.25;
 const ANIMATION_START_DELAY_MS = 1000;
 const MOUSE_ROTATION_FACTOR = 0.3;
 const ROTATION_LERP_SPEED = 0.1;
-const SPRING_FROM_POSITION: [number, number, number] = [0, -1, 3];
+const SPRING_FROM_POSITION: [number, number, number] = [0, -1.25, 3];
 const SPRING_FROM_ROTATION: [number, number, number] = [0, Math.PI, 0];
 const SPRING_TO_POSITION: [number, number, number] = [0, 0, -2];
 const SPRING_TO_ROTATION: [number, number, number] = [0, Math.PI * 3, 0];
@@ -25,16 +25,18 @@ const SPRING_CONFIG = { mass: 1, tension: 180, friction: 60 };
 /**
  * Inner 3D head model with mouse-tracking rotation and entrance spring animation.
  * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
- * @param onLoaded - Called once the model and environment map have finished loading.
+ * @param onReveal - Called once the spring animation has fully settled.
  */
 function HeadModel({
   mouseRef,
-  onLoaded,
+  onReveal,
 }: {
   mouseRef: React.RefObject<{ x: number; y: number }>;
-  onLoaded?: () => void;
+  onReveal?: () => void;
 }) {
   const headRef = useRef<THREE.Group>(null);
+  const skipAnimation = useRef(sessionStorage.getItem("introduced") === "1").current;
+  const rotationReady = useRef(!skipAnimation);
   const { scene: threeScene } = useThree();
   const texture = useLoader(THREE.TextureLoader, "/world.jpg");
 
@@ -43,9 +45,9 @@ function HeadModel({
       texture.mapping = THREE.EquirectangularReflectionMapping;
       texture.colorSpace = THREE.SRGBColorSpace;
       threeScene.environment = texture;
-      onLoaded?.();
+      onReveal?.();
     }
-  }, [texture, threeScene, onLoaded]);
+  }, [texture, threeScene, onReveal]);
 
   useEffect(() => {
     if (headRef.current) {
@@ -60,26 +62,30 @@ function HeadModel({
     }
   }, []);
 
-  const [animationComplete, setAnimationComplete] = useState(false);
-  const [baseRotation, setBaseRotation] = useState([0, 0, 0]);
+  const [animationComplete, setAnimationComplete] = useState(skipAnimation);
+  const [baseRotation, setBaseRotation] = useState(
+    skipAnimation ? [0, Math.PI * 3, 0] : [0, 0, 0],
+  );
 
-  const [animate, setAnimate] = useState(false);
+  const [animate, setAnimate] = useState(skipAnimation);
   useEffect(() => {
-    const timeout = setTimeout(
-      () => setAnimate(true),
-      ANIMATION_START_DELAY_MS,
-    );
+    if (skipAnimation) return;
+    const timeout = setTimeout(() => setAnimate(true), ANIMATION_START_DELAY_MS);
     return () => clearTimeout(timeout);
-  }, []);
+  }, [skipAnimation]);
 
   const { pos, rot } = useSpring({
-    from: { pos: SPRING_FROM_POSITION, rot: SPRING_FROM_ROTATION },
+    from: {
+      pos: skipAnimation ? SPRING_TO_POSITION : SPRING_FROM_POSITION,
+      rot: skipAnimation ? SPRING_TO_ROTATION : SPRING_FROM_ROTATION,
+    },
     to: animate
       ? { pos: SPRING_TO_POSITION, rot: SPRING_TO_ROTATION }
       : { pos: SPRING_FROM_POSITION, rot: SPRING_FROM_ROTATION },
+    immediate: skipAnimation,
     config: SPRING_CONFIG,
     onRest: () => {
-      if (animate) {
+      if (animate && !skipAnimation) {
         setAnimationComplete(true);
         setBaseRotation([0, Math.PI * 3, 0]);
       }
@@ -95,6 +101,10 @@ function HeadModel({
     headRef.current.position.set(px, py, pz);
 
     if (animationComplete) {
+      if (!rotationReady.current) {
+        headRef.current.rotation.set(baseRotation[0], baseRotation[1], baseRotation[2]);
+        rotationReady.current = true;
+      }
       const targetX =
         baseRotation[0] + (mouseRef.current?.y ?? 0) * -MOUSE_ROTATION_FACTOR;
       const targetY =
@@ -126,14 +136,14 @@ function HeadModel({
 /**
  * Full-screen R3F canvas containing the animated 3D head scene.
  * @param mouseRef - Ref containing normalised mouse coordinates in [-1, 1] range.
- * @param onLoaded - Called once the model and environment map have finished loading.
+ * @param onReveal - Called once the head spring animation has fully settled.
  */
 function HeadScene({
   mouseRef,
-  onLoaded,
+  onReveal,
 }: {
   mouseRef: React.RefObject<{ x: number; y: number }>;
-  onLoaded?: () => void;
+  onReveal?: () => void;
 }) {
   return (
     <Canvas camera={{ position: CAMERA_POSITION, fov: CAMERA_FOV }}>
@@ -143,7 +153,7 @@ function HeadScene({
         intensity={DIRECTIONAL_LIGHT_INTENSITY}
       />
       <Suspense fallback={null}>
-        <HeadModel mouseRef={mouseRef} onLoaded={onLoaded} />
+        <HeadModel mouseRef={mouseRef} onReveal={onReveal} />
       </Suspense>
     </Canvas>
   );

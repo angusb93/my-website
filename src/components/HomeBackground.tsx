@@ -10,12 +10,17 @@ const MAX_DARKNESS_OPACITY = 0.7;
 
 /**
  * Fixed 3D background with scroll-driven blur/darkness and mouse-tracking.
- * @param onLoaded - Called once the 3D scene has finished loading.
+ * The canvas is hidden until `revealed` is true, ensuring the head is already
+ * in its final position when the loader cuts away.
+ * @param onReveal - Called once the head spring animation has settled.
+ * @param revealed - Controls canvas visibility for the hard cut.
  */
 export default function HomeBackground({
-  onLoaded,
+  onReveal,
+  revealed,
 }: {
-  onLoaded?: () => void;
+  onReveal?: () => void;
+  revealed: boolean;
 }) {
   const [blur, setBlur] = useState(0);
   const [darkness, setDarkness] = useState(0);
@@ -56,9 +61,13 @@ export default function HomeBackground({
     <>
       <div
         className="fixed inset-0 w-screen h-screen"
-        style={{ filter: `blur(${blur}px)`, transition: "filter 0.3s ease" }}
+        style={{
+          filter: `blur(${blur}px)`,
+          transition: "filter 0.3s ease",
+          opacity: revealed ? 1 : 0,
+        }}
       >
-        <HeadScene mouseRef={mouseRef} onLoaded={onLoaded} />
+        <HeadScene mouseRef={mouseRef} onReveal={onReveal} />
       </div>
       <div
         className="fixed inset-0 w-screen h-screen pointer-events-none"
