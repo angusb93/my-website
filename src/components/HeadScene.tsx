@@ -35,7 +35,9 @@ function HeadModel({
   onReveal?: () => void;
 }) {
   const headRef = useRef<THREE.Group>(null);
-  const skipAnimation = useRef(sessionStorage.getItem("introduced") === "1").current;
+  const skipAnimation = useRef(
+    sessionStorage.getItem("introduced") === "1",
+  ).current;
   const rotationReady = useRef(!skipAnimation);
   const { scene: threeScene } = useThree();
   const texture = useLoader(THREE.TextureLoader, "/world.jpg");
@@ -70,7 +72,10 @@ function HeadModel({
   const [animate, setAnimate] = useState(skipAnimation);
   useEffect(() => {
     if (skipAnimation) return;
-    const timeout = setTimeout(() => setAnimate(true), ANIMATION_START_DELAY_MS);
+    const timeout = setTimeout(
+      () => setAnimate(true),
+      ANIMATION_START_DELAY_MS,
+    );
     return () => clearTimeout(timeout);
   }, [skipAnimation]);
 
@@ -102,7 +107,11 @@ function HeadModel({
 
     if (animationComplete) {
       if (!rotationReady.current) {
-        headRef.current.rotation.set(baseRotation[0], baseRotation[1], baseRotation[2]);
+        headRef.current.rotation.set(
+          baseRotation[0],
+          baseRotation[1],
+          baseRotation[2],
+        );
         rotationReady.current = true;
       }
       const targetX =
