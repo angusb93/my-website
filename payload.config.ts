@@ -1,4 +1,5 @@
 import { buildConfig } from 'payload'
+import type { SharpDependency } from 'payload'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { seoPlugin } from '@payloadcms/plugin-seo'
@@ -34,7 +35,8 @@ export default buildConfig({
   cors: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''].filter(Boolean),
   secret: process.env.PAYLOAD_SECRET || '',
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
-  sharp,
+  // sharp 0.35 added a new overload that breaks Payload's SharpDependency check
+  sharp: sharp as unknown as SharpDependency,
   typescript: {
     outputFile: './src/payload-types.ts',
   },
