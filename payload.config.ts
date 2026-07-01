@@ -11,14 +11,13 @@ import { Pages } from './src/collections/Pages'
 import { Projects } from './src/collections/Projects'
 import { Users } from './src/collections/Users'
 import type { Article, Page, Project } from './src/payload-types'
+import { DATABASE_URI, PAYLOAD_SECRET, SERVER_URL } from './src/env'
 
 const generateTitle: GenerateTitle<Article | Page | Project> = ({ doc }) =>
   doc?.title ? `${doc.title} | Angus Buick` : 'Angus Buick'
 
-const generateURL: GenerateURL<Article | Page | Project> = ({ doc }) => {
-  const base = process.env.NEXT_PUBLIC_SERVER_URL ?? ''
-  return doc?.slug ? `${base}/${doc.slug}` : base
-}
+const generateURL: GenerateURL<Article | Page | Project> = ({ doc }) =>
+  doc?.slug ? `${SERVER_URL}/${doc.slug}` : SERVER_URL
 
 export default buildConfig({
   admin: {
@@ -30,11 +29,11 @@ export default buildConfig({
     seoPlugin({ generateTitle, generateURL }),
   ],
   db: mongooseAdapter({
-    url: process.env.MONGODB_URI || '',
+    url: DATABASE_URI,
   }),
-  cors: [process.env.NEXT_PUBLIC_SERVER_URL ?? ''].filter(Boolean),
-  secret: process.env.PAYLOAD_SECRET || '',
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || '',
+  cors: [SERVER_URL],
+  secret: PAYLOAD_SECRET,
+  serverURL: SERVER_URL,
   // sharp 0.35 added a new overload that breaks Payload's SharpDependency check
   sharp: sharp as unknown as SharpDependency,
   typescript: {
