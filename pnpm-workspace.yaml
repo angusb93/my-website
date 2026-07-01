@@ -1,3 +1,10 @@
+# Flatten node_modules (npm-style) so Next.js output file tracing reliably
+# bundles sharp's native binaries (@img/sharp-libvips-linux-x64) into the Vercel
+# serverless function. With the default isolated linker, pnpm's symlinked
+# .pnpm layout confuses the tracer and prod 500s with:
+#   Could not load the "sharp" module using the linux-x64 runtime
+nodeLinker: hoisted
+
 allowBuilds:
   esbuild: true
   sharp: true
