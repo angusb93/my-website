@@ -17,33 +17,33 @@
     "knip:fix": "knip --fix"
   },
   "dependencies": {
-    "@payloadcms/db-mongodb": "3.85.1",
-    "@payloadcms/next": "3.85.1",
-    "@payloadcms/plugin-seo": "3.85.1",
-    "@payloadcms/richtext-lexical": "3.85.1",
-    "@react-spring/three": "10.1.1",
+    "@payloadcms/db-mongodb": "3.85.2",
+    "@payloadcms/next": "3.85.2",
+    "@payloadcms/plugin-seo": "3.85.2",
+    "@payloadcms/richtext-lexical": "3.85.2",
+    "@react-spring/three": "10.1.2",
     "@react-three/drei": "10.7.7",
     "@react-three/fiber": "9.6.1",
-    "@tailwindcss/postcss": "4.3.0",
-    "@types/three": "0.184.1",
+    "@tailwindcss/postcss": "4.3.2",
+    "@types/three": "0.185.1",
     "clsx": "2.1.1",
-    "next": "16.2.9",
-    "payload": "3.85.1",
+    "next": "16.2.10",
+    "payload": "3.85.2",
     "react": "19.2.7",
     "react-dom": "19.2.7",
-    "sharp": "0.35.1",
+    "sharp": "0.35.3",
     "tailwind-merge": "3.6.0",
-    "three": "0.184.0"
+    "three": "0.185.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.16",
-    "@types/node": "25.9.3",
+    "@biomejs/biome": "2.5.3",
+    "@types/node": "26.1.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
-    "@typescript/native-preview": "7.0.0-dev.20260611.2",
-    "knip": "^6.14.2",
-    "postcss": "8.5.15",
-    "tailwindcss": "4.3.0",
-    "typescript": "6.0.3"
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "knip": "^6.25.0",
+    "postcss": "8.5.16",
+    "tailwindcss": "4.3.2",
+    "typescript": "7.0.2"
   }
 }
